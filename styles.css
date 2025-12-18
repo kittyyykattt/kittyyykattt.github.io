@@ -1,0 +1,320 @@
+:root {
+  /* theme tokens (default / pink) */
+  --bg: #fff7fb;
+  --card: #ffffff;
+  --text: #3b2f35;
+  --muted: #8b6f7a;
+  --border: #f3c6d6;
+  --accent: #f2a7c2;
+  --accent-soft: #f9dbe7;
+
+  --shadow: rgba(242, 167, 194, 0.15);
+  --nav-bg: rgba(255, 247, 251, 0.85);
+}
+
+/* ================= RESET ================= */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ================= LAYOUT ================= */
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+/* ================= NAV ================= */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--text);
+  border: 1px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+  background: var(--accent-soft);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.nav-right {
+  display: flex;
+  gap: 10px;
+}
+
+.pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+.pill:hover {
+  filter: brightness(0.97);
+}
+
+
+/* ================= CARDS ================= */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 22px;
+  margin-top: 22px;
+  box-shadow: 0 10px 25px var(--shadow);
+}
+
+.muted { color: var(--muted); }
+
+.about-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+
+
+
+
+
+/* Smaller, polished headshot */
+.avatar {
+  width: 280px;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 25px var(--shadow);
+  flex-shrink: 0;
+
+  /* aligns photo with card content */
+  margin-top: 22px;
+}
+
+
+/* Let the card fill remaining space */
+.about-card {
+  flex: 1;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+  .about-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+
+/* ================= PROJECTS ================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.project {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  background: var(--card);
+}
+
+/* ================= THEME PICKER ================= */
+.theme-panel {
+  position: fixed;
+  right: 18px;
+  top: 110px;
+}
+
+.theme-fab {
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--nav-bg);
+  cursor: pointer;
+}
+
+.theme-card {
+  width: 220px;
+  background: var(--nav-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  margin-top: 10px;
+}
+
+.theme-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.theme-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: 2px solid white;
+}
+/* ================= SKILLS ================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.skills-grid h4 {
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.skills-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ================= THEMES ================= */
+
+/* WHITE */
+:root[data-theme="white"] {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #111827;
+  --accent-soft: #f3f4f6;
+  --nav-bg: rgba(255, 255, 255, 0.85);
+}
+
+/* BLACK */
+:root[data-theme="black"] {
+  --bg: #0f0f12;
+  --card: #18181b;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --border: #27272a;
+  --accent: #f9fafb;
+  --accent-soft: #27272a;
+  --nav-bg: rgba(15, 15, 18, 0.85);
+}
+
+/* LAVENDER */
+:root[data-theme="lavender"] {
+  --bg: #f6f4ff;
+  --card: #ffffff;
+  --text: #3a3650;
+  --muted: #7a7698;
+  --border: #dedbff;
+  --accent: #c7b6ff;
+  --accent-soft: #edeaff;
+  --nav-bg: rgba(246, 244, 255, 0.85);
+}
+
+/* MINT */
+:root[data-theme="mint"] {
+  --bg: #f2fffb;
+  --card: #ffffff;
+  --text: #234e44;
+  --muted: #6aa89a;
+  --border: #c9f1e6;
+  --accent: #9fe7d6;
+  --accent-soft: #e6faf5;
+  --nav-bg: rgba(242, 255, 251, 0.85);
+}
+
+/* SKY (blue) */
+:root[data-theme="sky"] {
+  --bg: #f3f8ff;
+  --card: #ffffff;
+  --text: #24324a;
+  --muted: #6d7a94;
+  --border: #d7e5ff;
+  --accent: #9fc9ff;
+  --accent-soft: #e9f1ff;
+  --nav-bg: rgba(243, 248, 255, 0.85);
+}
+
+/* PEACH (orange) */
+:root[data-theme="peach"] {
+  --bg: #fff6f3;
+  --card: #ffffff;
+  --text: #4a2f2a;
+  --muted: #9a6f67;
+  --border: #ffd8cf;
+  --accent: #ffb7a7;
+  --accent-soft: #ffe6df;
+  --nav-bg: rgba(255, 246, 243, 0.85);
+}
+
+/* BUTTER (yellow) */
+:root[data-theme="butter"] {
+  --bg: #fffaf0;
+  --card: #ffffff;
+  --text: #3a3524;
+  --muted: #7f764f;
+  --border: #ffedc2;
+  --accent: #ffe39c;
+  --accent-soft: #fff3cf;
+  --nav-bg: rgba(255, 250, 240, 0.85);
+}
+

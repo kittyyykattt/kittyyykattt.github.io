@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Katya Serechenko | HOME</title>
+    <meta name="description" content="Yekaterina Serechenko - CS Student @ FSU" />
+    <meta name="author" content="Yekaterina Serechenko" />
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="nav-left">
+          <nav class="nav-links" aria-label="Primary">
+            <a class="nav-link is-active" href="index.html">Home</a>
+            <a class="nav-link" href="projects.html">Projects</a>
+            <a class="nav-link" href="experience.html">Experience</a>
+            <a class="nav-link" href="involvement.html">Involvement</a>
+          </nav>
+        </div>
+
+        <div class="nav-right">
+          <a class="pill" href="https://github.com/kittyyykattt/.github.io" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="pill" href="https://leetcode.com/u/kserechenko" target="_blank" rel="noreferrer">Leetcode</a>
+          <a class="pill" href="https://www.linkedin.com/in/katya-serechenko-84a175351" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="pill" href="./assets/resume.png" target="_blank" rel="noreferrer">Resume</a>
+          <a class="pill" href="mailto:yserechenko@gmail.com">Email</a>
+        </div>
+      </div>
+    </header>
+
+    <aside class="theme-panel" aria-label="Theme picker">
+      <button class="theme-fab" id="themeToggle" type="button" aria-expanded="false" aria-controls="themeCard" title="Theme">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5
+                   0-.39-.15-.74-.39-1.01-.23-.27-.37-.61-.37-.99
+                   0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5
+                   0-4.42-4.03-8-9-8z"
+                fill="currentColor"/>
+        </svg>
+      </button>
+
+      <div class="theme-card" id="themeCard" hidden>
+        <div class="theme-card-header">
+          <p class="theme-title">Theme</p>
+        </div>
+
+        <div class="theme-row" id="themeRow">
+          <button class="theme-dot" type="button" data-theme="pink" aria-pressed="false" title="Pink" style="background:#f2a7c2;"></button>
+          <button class="theme-dot" type="button" data-theme="lavender" aria-pressed="false" title="Lavender" style="background:#c7b6ff;"></button>
+          <button class="theme-dot" type="button" data-theme="mint" aria-pressed="false" title="Mint" style="background:#9fe7d6;"></button>
+          <button class="theme-dot" type="button" data-theme="sky" aria-pressed="false" title="Sky" style="background:#9fc9ff;"></button>
+          <button class="theme-dot" type="button" data-theme="peach" aria-pressed="false" title="Peach" style="background:#ffb7a7;"></button>
+          <button class="theme-dot" type="button" data-theme="butter" aria-pressed="false" title="Butter" style="background:#ffe39c;"></button>
+          <button class="theme-dot" type="button" data-theme="white" aria-pressed="false" title="White" style="background:#ffffff; border:1px solid #e5e7eb;"></button>
+          <button class="theme-dot" type="button" data-theme="black" aria-pressed="false" title="Black" style="background:#0f0f12;"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="container">
+      <section class="hero">
+        <div>
+          <h1 class="hero-title">Yekaterina Serechenko</h1>
+          <p class="subtitle">Computer Science • Florida State University</p>
+        </div>
+      </section>
+
+      <section class="about-row">
+        <img class="avatar" src="assets/headshot.jpg?v=3" alt="Yekaterina Serechenko headshot" />
+
+        <div class="card about-card">
+  <p>
+    Hi! I’m Yekaterina (Katya) Serechenko, a Computer Science student at Florida State University graduating end of 2026.
+    I’m highly interested in software engineering with growing interests in artificial intelligence, cloud-based systems, and game development. 
+    Outside of coursework, I’m active in several tech-focused and cultural organizations on campus, where I collaborate on projects and organize events.
+  </p>
+
+  <ul class="skills" style="margin-top:14px;">
+    <li><strong>Current Focus:</strong> Software Engineering, Full-Stack Development</li>
+    <li><strong>Interests:</strong> Artificial Intelligence, Cloud Systems, Game Development</li>
+  </ul>
+</div>
+
+      </section>
+
+      <section class="card">
+        <h2>Technical Skills</h2>
+
+        <div class="skills-grid">
+          <div>
+            <h4>Languages</h4>
+            <p>C++, C#, Java, JavaScript, Python, HTML, Assembly (MIPS)</p>
+          </div>
+
+          <div>
+            <h4>Frameworks & Tools</h4>
+            <p>.NET MAUI, ASP.NET WebAPI, React, Tailwind CSS, Git, GitHub</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <p class="muted">© <span id="year"></span> Yekaterina Serechenko</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
