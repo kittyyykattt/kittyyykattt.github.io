@@ -1,109 +1,327 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Katya Serechenko | HOME</title>
-    <meta name="description" content="Katya Serechenko - CS Student @ FSU" />
-    <meta name="author" content="Katya Serechenko" />
-    <link rel="icon" type="image/png" href="favicon.png?v=2">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Katya Serechenko | Portfolio</title>
+  <meta name="description" content="Katya Serechenko — Computer Science student at Florida State University. Portfolio, projects, and experience." />
+  <meta name="author" content="Katya Serechenko" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="headshot.png" />
 
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <body>
-    <!-- ================= NAV ================= -->
-    <header class="nav-wrap">
-      <nav class="nav container">
-        <a class="brand" href="index.html">Katya</a>
-        <div class="nav-links">
-          <a class="active" href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="experience.html">Experience</a>
-          <a href="involvement.html">Involvement</a>
-        </div>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
+<body>
+  <!-- Particle background -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div id="scroll-progress" aria-hidden="true"><div id="scroll-progress-bar"></div></div>
+
+
+  <header class="site-header" id="top">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-text">Katya Serechenko</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#contact">Contact</a>
       </nav>
-    </header>
 
-    <!-- ================= HERO ================= -->
-    <main class="container">
-      <section class="hero">
-        <div class="hero-left">
-          <h1>Katya Serechenko</h1>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer">
+        <span class="sr-only">Open menu</span>
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="nav-drawer" id="navDrawer" hidden>
+      <a class="drawer-link" href="#home">Home</a>
+      <a class="drawer-link" href="#experience">Experience</a>
+      <a class="drawer-link" href="#projects">Projects</a>
+      <a class="drawer-link" href="#skills">Skills</a>
+      <a class="drawer-link" href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="section hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 class="headline">Katya Serechenko</h1>
+          <p class="eyebrow">Computer Science Student &amp; Software Engineer</p>
           <p class="lead">
-            Computer Science student @ FSU
+            Lab &amp; Software Engineering Intern at Danfoss, working with instrumentation and automation,
+            including Python, C++, MATLAB, and LabVIEW. Hands-on experience developing full-stack applications,
+            modernizing legacy test systems, and supporting data-driven engineering workflows.
           </p>
 
-          <div class="hero-cta">
-            <a class="btn" href="projects.html">Projects</a>
-            <a class="btn btn-ghost" href="experience.html">Experience</a>
+            <p class = "lead">Open to Internships • Research • SWE roles</p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#projects">View My Work</a>
+            <a class="btn btn-ghost" href="#contact">Get In Touch</a>
           </div>
 
-          <div class="pill-row">
-            <span class="pill">React</span>
-            <span class="pill">TypeScript</span>
-            <span class="pill">C++</span>
-            <span class="pill">.NET</span>
-          </div>
+  
+
         </div>
 
-        <div class="hero-right">
-          <div class="card hero-card">
-            <h3>Currently</h3>
-            <ul class="list">
-              <li>FSU CS (Junior)</li>
-              <li>Frontend + Full-stack projects</li>
-              <li>Building portfolio + GitHub presence</li>
+        <div class="hero-card">
+  <div class="avatar-wrap">
+    <img class="headshot" src="assets/headshot.jpg" alt="Katya Serechenko headshot" loading="lazy">
+  </div>
+
+<div class="hero-icons">
+
+  <a class="icon-btn" href="mailto:yserechenko@gmail.com">
+    <img src="assets/emailLogo.png" alt="Email">
+  </a>
+
+  <a class="icon-btn" href="https://www.linkedin.com/in/katya-serechenko-84a175351" target="_blank">
+    <img src="assets/linkedlnLogo.png" alt="LinkedIn">
+  </a>
+
+  <a class="icon-btn" href="https://github.com/kittyyykattt" target="_blank">
+    <img src="assets/githubLogo.png" alt="GitHub">
+  </a>
+
+</div>
+
+
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Professional Experience & Leadership</h2>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-top">
+              <h3>Lab &amp; Software Engineering Intern</h3>
+              <p class="muted">Danfoss • Tallahassee, FL</p>
+            </div>
+            <p class="muted">Febuary 2026 — Present</p>
+            <ul class="bullets">
+            <li>Modernizing legacy lab test tooling to improve reliability, maintainability, and long-term supportability</li>
+            <li>Supporting instrumentation workflows and data pipelines used in engineering testing and validation</li>
+            <li>Working across Python/C++/MATLAB/LabVIEW environments to improve automation and test efficiency</li>
             </ul>
-          </div>
+          </article>
 
-          <div class="card hero-card">
-            <h3>Interests</h3>
-            <ul class="list">
-              <li>UI/UX</li>
-              <li>Software Engineering</li>
-              <li>Hardware + Software</li>
-              <li>AI + Automation</li>
+          <article class="card">
+            <div class="card-top">
+              <h3>Software & AI Evaluation Engineer</h3>
+              <p class="muted">Outlier • Freelance</p>
+            </div>
+            <p class="muted">Nov 2025 — Present</p>
+            <ul class="bullets">
+              <li>Evaluating and debugging solutions in C#, C++, and Python with emphasis on correctness and logical validation</li>
+            <li>Reviewing algorithmic outputs for accuracy and efficiency to support model evaluation pipelines</li>
+            <li>Improving code-based datasets by validating and correcting outputs for higher reliability</li>
             </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <h3>Front-End Developer</h3>
+              <p class="muted">Seminole Innovators • Student Team</p>
+            </div>
+            <p class="muted">August 2025 — Present</p>
+            <ul class="bullets">
+              <li>Building responsive UIs with React/Tailwind for a football-themed product (Touchdown Tycoon / AI Dynasty).</li>
+              <li>Implementing component systems, interactions, and polish</li>
+              <li>Shipping iterative improvements via GitHub workflows and code reviews.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <h3>Mentorship Director</h3>
+              <p class="muted">Women in Computer Science (WiCS)</p>
+            </div>
+            <p class="muted">August 2025 — Present</p>
+            <ul class="bullets">
+              <li>Coordinating mentor/mentee matching and programming to support student growth in tech.</li>
+              <li>Organizing workshops and events focused on career readiness and community building.</li>
+              <li>Partnering with campus orgs and industry guests for talks and networking opportunities.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <h3>Founder</h3>
+              <p class="muted">Ekkai • Handmade goods</p>
+            </div>
+            <p class="muted">2024 — Present</p>
+            <ul class="bullets">
+              <li>Designed and managed the brand’s digital presence and customer-facing workflows</li>
+            <li>Built and maintained web-based assets supporting product presentation and marketing</li>
+            <li>Managed inventory, fulfillment, and customer communication end-to-end</li>
+            <li>Secured micro-grant funding through the College of Entrepreneurship</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Featured Projects</h2>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-top">
+              <h3>TheraOffice</h3>
+              <p class="muted">.NET MAUI • ASP.NET Core • Web API</p>
+            </div>
+            <p class="muted">
+              Medical scheduling and appointments system with patient/provider flows and structured data models.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Full‑stack</span><span class="tag">Mobile</span><span class="tag">API</span>
+            </div>
+            <div class="card-actions">
+              <a class="link" href="https://github.com/kittyyykattt/TheraOffice" target="_blank" rel="noreferrer">View Code ↗</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <h3>Touchdown Tycoon</h3>
+              <p class="muted">React • Tailwind • Vite</p>
+            </div>
+            <p class="muted">
+              A polished, game‑style web experience built with modern component UI and fast iteration.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Front‑end</span><span class="tag">UI/UX</span><span class="tag">Team</span>
+            </div>
+         
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <h3>UME</h3>
+              <p class="muted">Next.js • Prisma • Express</p>
+            </div>
+            <p class="muted">
+              Connection‑matching app exploring data modeling, authentication patterns, and responsive layout.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Web</span><span class="tag">Database</span><span class="tag">API</span>
+            </div>
+           
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <h3>Portfolio</h3>
+              <p class="muted">HTML • CSS • JavaScript</p>
+            </div>
+            <p class="muted">
+              View the code for my portfolio!
+            <div class="tag-row">
+              <span class="tag">Design</span><span class="tag">Accessibility</span><span class="tag">Performance</span>
+            </div>
+            <div class="card-actions">
+              <a class="link" href="https://github.com/kittyyykattt/kittyyykattt.github.io" target="_blank" rel="noreferrer">View Repo ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Technical Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Programming</h3>
+            <p class="muted">C++ • C • Python • Java • JavaScript • C# </p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Web</h3>
+            <p class="muted">React • Next.js • Tailwind • HTML/CSS • REST APIs</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Systems</h3>
+            <p class="muted">Linux/Unix • Git </p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Data &amp; Tools</h3>
+            <p class="muted">SQL </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ================= ABOUT ================= -->
-      <section class="card">
-        <h2>About</h2>
-        <p>
-          I'm a CS student. 
-        </p>
-      </section>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Get In Touch</h2>
+          <p class="muted">Let’s connect — I’m always open to opportunities and collaborations.</p>
+        </div>
 
-      <!-- ================= SKILLS ================= -->
-      <section class="card">
-        <h2>Technical Skills</h2>
-
-        <div class="grid-2">
-          <div>
-            <h4>Languages</h4>
-            <p>C++, C#, Java, JavaScript, Python, HTML</p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Email</h3>
+            <p class="muted"><a class="link" href="mailto:yserechenko@gmail.com">yserechenko@gmail.com</a></p>
           </div>
 
-          <div>
-            <h4>Frameworks & Tools</h4>
-            <p>.NET MAUI, ASP.NET WebAPI, React, Tailwind CSS, Git, GitHub</p>
+          <div class="contact-card">
+            <h3>LinkedIn</h3>
+            <p class="muted"><a class="link" href="https://www.linkedin.com/in/katya-serechenko-84a175351" target="_blank" rel="noreferrer">Connect on LinkedIn ↗</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h3>GitHub</h3>
+            <p class="muted"><a class="link" href="https://github.com/kittyyykattt" target="_blank" rel="noreferrer">View Projects ↗</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Location</h3>
+            <p class="muted">Tallahassee, FL</p>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <footer class="container footer">
-      <p class="muted">© <span id="year"></span> Katya Serechenko</p>
-    </footer>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="muted">© <span id="year"></span> Katya Serechenko.</p>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
