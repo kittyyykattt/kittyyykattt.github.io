@@ -18,10 +18,7 @@
 </head>
 
 <body>
-  <!-- Particle background -->
-  <canvas id="particles" aria-hidden="true"></canvas>
   <div id="scroll-progress" aria-hidden="true"><div id="scroll-progress-bar"></div></div>
-
 
   <header class="site-header" id="top">
     <div class="nav-shell">
@@ -53,57 +50,55 @@
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section id="home" class="section hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1 class="headline">Katya Serechenko</h1>
-          <p class="eyebrow">Computer Science Student &amp; Software Engineer</p>
-          <p class="lead">
-            Lab &amp; Software Engineering Intern at Danfoss, working with instrumentation and automation,
-            including Python, C++, MATLAB, and LabVIEW. Hands-on experience developing full-stack applications,
-            modernizing legacy test systems, and supporting data-driven engineering workflows.
-          </p>
+  <div class="hero-wrap">
+    <canvas id="particles" aria-hidden="true"></canvas>
 
-            <p class = "lead">Open to Internships • Research • SWE roles</p>
+    <main>
+      <section id="home" class="section hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1 class="headline">Katya Serechenko</h1>
+            <p class="eyebrow">Computer Science Student &amp; Software Engineer</p>
+            <p class="lead">
+              Lab &amp; Software Engineering Intern at Danfoss, working with instrumentation and automation,
+              including Python, C++, MATLAB, and LabVIEW. Hands-on experience developing full-stack applications,
+              modernizing legacy test systems, and supporting data-driven engineering workflows.
+            </p>
 
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#projects">View My Work</a>
-            <a class="btn btn-ghost" href="#contact">Get In Touch</a>
+            <p class="lead">Open to Internships • Research • SWE roles</p>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#projects">View My Work</a>
+              <a class="btn btn-ghost" href="#contact">Get In Touch</a>
+            </div>
           </div>
 
-  
+          <div class="hero-card">
+            <div class="avatar-wrap">
+              <img class="headshot" src="assets/headshot.jpg" alt="Katya Serechenko headshot" loading="lazy">
+            </div>
+
+            <div class="hero-icons">
+              <a class="icon-btn" href="mailto:yserechenko@gmail.com">
+                <img src="assets/emailLogo.png" alt="Email">
+              </a>
+
+              <a class="icon-btn" href="https://www.linkedin.com/in/katya-serechenko-84a175351" target="_blank" rel="noreferrer">
+                <img src="assets/linkedlnLogo.png" alt="LinkedIn">
+              </a>
+
+              <a class="icon-btn" href="https://github.com/kittyyykattt" target="_blank" rel="noreferrer">
+                <img src="assets/githubLogo.png" alt="GitHub">
+              </a>
+            </div>
+          </div>
 
         </div>
-
-        <div class="hero-card">
-  <div class="avatar-wrap">
-    <img class="headshot" src="assets/headshot.jpg" alt="Katya Serechenko headshot" loading="lazy">
+      </section>
+    </main>
   </div>
 
-<div class="hero-icons">
-
-  <a class="icon-btn" href="mailto:yserechenko@gmail.com">
-    <img src="assets/emailLogo.png" alt="Email">
-  </a>
-
-  <a class="icon-btn" href="https://www.linkedin.com/in/katya-serechenko-84a175351" target="_blank">
-    <img src="assets/linkedlnLogo.png" alt="LinkedIn">
-  </a>
-
-  <a class="icon-btn" href="https://github.com/kittyyykattt" target="_blank">
-    <img src="assets/githubLogo.png" alt="GitHub">
-  </a>
-
-</div>
-
-
-</div>
-
-        </div>
-      </div>
-    </section>
+  <main class="page-content">
 
     <!-- EXPERIENCE -->
     <section id="experience" class="section">
@@ -120,9 +115,9 @@
             </div>
             <p class="muted">Febuary 2026 — Present</p>
             <ul class="bullets">
-            <li>Modernizing legacy lab test tooling to improve reliability, maintainability, and long-term supportability</li>
-            <li>Supporting instrumentation workflows and data pipelines used in engineering testing and validation</li>
-            <li>Working across Python/C++/MATLAB/LabVIEW environments to improve automation and test efficiency</li>
+              <li>Modernizing legacy lab test tooling to improve reliability, maintainability, and long-term supportability</li>
+              <li>Supporting instrumentation workflows and data pipelines used in engineering testing and validation</li>
+              <li>Working across Python/C++/MATLAB/LabVIEW environments to improve automation and test efficiency</li>
             </ul>
           </article>
 
@@ -134,8 +129,8 @@
             <p class="muted">Nov 2025 — Present</p>
             <ul class="bullets">
               <li>Evaluating and debugging solutions in C#, C++, and Python with emphasis on correctness and logical validation</li>
-            <li>Reviewing algorithmic outputs for accuracy and efficiency to support model evaluation pipelines</li>
-            <li>Improving code-based datasets by validating and correcting outputs for higher reliability</li>
+              <li>Reviewing algorithmic outputs for accuracy and efficiency to support model evaluation pipelines</li>
+              <li>Improving code-based datasets by validating and correcting outputs for higher reliability</li>
             </ul>
           </article>
 
@@ -173,9 +168,9 @@
             <p class="muted">2024 — Present</p>
             <ul class="bullets">
               <li>Designed and managed the brand’s digital presence and customer-facing workflows</li>
-            <li>Built and maintained web-based assets supporting product presentation and marketing</li>
-            <li>Managed inventory, fulfillment, and customer communication end-to-end</li>
-            <li>Secured micro-grant funding through the College of Entrepreneurship</li>
+              <li>Built and maintained web-based assets supporting product presentation and marketing</li>
+              <li>Managed inventory, fulfillment, and customer communication end-to-end</li>
+              <li>Secured micro-grant funding through the College of Entrepreneurship</li>
             </ul>
           </article>
         </div>
@@ -190,64 +185,85 @@
         </div>
 
         <div class="cards">
-          <article class="card">
+
+          <article
+            class="card card-nolepath project-card"
+            tabindex="0"
+            role="button"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-label="Open project details: Nole Path"
+          >
+            <div class="card-image">
+              <img
+                src="assets/dashboard-NP.png"
+                alt="Nole Path dashboard showing AI-powered internship tracking and student workflow"
+                loading="lazy"
+              />
+            </div>
+
             <div class="card-top">
-              <h3>TheraOffice</h3>
-              <p class="muted">.NET MAUI • ASP.NET Core • Web API</p>
+              <h2>Nole Path</h2>
+              <p class="muted">AI Career Platform • Full-Stack Web App</p>
             </div>
+
             <p class="muted">
-              Medical scheduling and appointments system with patient/provider flows and structured data models.
+              AI-driven internship platform that matches students to opportunities,
+              analyzes resumes, and guides career readiness through an intelligent coaching interface.
             </p>
+
             <div class="tag-row">
-              <span class="tag">Full‑stack</span><span class="tag">Mobile</span><span class="tag">API</span>
+              <span class="tag">Full-stack</span>
+              <span class="tag">AI Integration</span>
+              <span class="tag">Typescript</span>
             </div>
+
             <div class="card-actions">
-              <a class="link" href="https://github.com/kittyyykattt/TheraOffice" target="_blank" rel="noreferrer">View Code ↗</a>
+              <a class="link" href="https://kittyyykattt.github.io/Nole-Path/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+              <a class="link" href="https://github.com/kittyyykattt/Nole-Path" target="_blank" rel="noopener noreferrer">View Code ↗</a>
             </div>
           </article>
 
-          <article class="card">
-            <div class="card-top">
-              <h3>Touchdown Tycoon</h3>
-              <p class="muted">React • Tailwind • Vite</p>
+          <article
+            class="card card-thera project-card"
+            tabindex="0"
+            role="button"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-label="Open project details: TheraOffice"
+          >
+            <div class="card-image">
+              <img
+                src="assets/theraoffice-ex.png"
+                alt="TheraOffice medical management system dashboard"
+                loading="lazy"
+              />
             </div>
+
+            <div class="card-top">
+              <h2>TheraOffice</h2>
+              <p class="muted">.NET MAUI • ASP.NET Core • REST APIs • Full-Stack</p>
+            </div>
+
             <p class="muted">
-              A polished, game‑style web experience built with modern component UI and fast iteration.
+              Cross-platform medical office management system using .NET MAUI
+              and ASP.NET Core. Implemented RESTful services, structured domain models,
+              and persistent storage to support real-world clinical workflows including
+              patient records, appointments, and diagnoses.
             </p>
-            <div class="tag-row">
-              <span class="tag">Front‑end</span><span class="tag">UI/UX</span><span class="tag">Team</span>
-            </div>
-         
-          </article>
 
-          <article class="card">
-            <div class="card-top">
-              <h3>UME</h3>
-              <p class="muted">Next.js • Prisma • Express</p>
-            </div>
-            <p class="muted">
-              Connection‑matching app exploring data modeling, authentication patterns, and responsive layout.
-            </p>
             <div class="tag-row">
-              <span class="tag">Web</span><span class="tag">Database</span><span class="tag">API</span>
+              <span class="tag">C#</span>
+              <span class="tag">Desktop</span>
+              <span class="tag">API Design</span>
+              <span class="tag">.NET</span>
             </div>
-           
-          </article>
 
-          <article class="card">
-            <div class="card-top">
-              <h3>Portfolio</h3>
-              <p class="muted">HTML • CSS • JavaScript</p>
-            </div>
-            <p class="muted">
-              View the code for my portfolio!
-            <div class="tag-row">
-              <span class="tag">Design</span><span class="tag">Accessibility</span><span class="tag">Performance</span>
-            </div>
             <div class="card-actions">
-              <a class="link" href="https://github.com/kittyyykattt/kittyyykattt.github.io" target="_blank" rel="noreferrer">View Repo ↗</a>
+              <a class="link" href="https://github.com/kittyyykattt/TheraOffice" target="_blank" rel="noopener noreferrer">View Code ↗</a>
             </div>
           </article>
+
         </div>
       </div>
     </section>
@@ -262,7 +278,7 @@
         <div class="skills-grid">
           <div class="skill-card">
             <h3>Programming</h3>
-            <p class="muted">C++ • C • Python • Java • JavaScript • C# </p>
+            <p class="muted">C++ • C • Python • Java • JavaScript • C#</p>
           </div>
 
           <div class="skill-card">
@@ -272,12 +288,12 @@
 
           <div class="skill-card">
             <h3>Systems</h3>
-            <p class="muted">Linux/Unix • Git </p>
+            <p class="muted">Linux/Unix • Git</p>
           </div>
 
           <div class="skill-card">
             <h3>Data &amp; Tools</h3>
-            <p class="muted">SQL </p>
+            <p class="muted">SQL</p>
           </div>
         </div>
       </div>
@@ -321,6 +337,9 @@
       <p class="muted">© <span id="year"></span> Katya Serechenko.</p>
     </div>
   </footer>
+
+  <!-- Modal overlay (click background to close) -->
+  <div class="project-overlay" id="projectOverlay" aria-hidden="true"></div>
 
   <script src="script.js"></script>
 </body>
