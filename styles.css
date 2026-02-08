@@ -21,7 +21,7 @@
 html{ scroll-behavior:smooth; }
 body{
   margin:0;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+   font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, serif;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   background: #ffffff;
@@ -30,9 +30,11 @@ body{
   padding-right: env(safe-area-inset-right);
 }
 h1, h2, h3, .headline{
-  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
   letter-spacing: -0.02em;
 }
+
 
 a{ color: inherit; text-decoration: none; }
 code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
@@ -424,7 +426,7 @@ code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liber
 
 .experience-head{
   position: relative;
-  padding: 20px 0px;
+  padding: 10px 0px;
   margin-bottom: 0px;
 margin: 0 0 8px;
 z-index: 2;
@@ -435,8 +437,8 @@ z-index: 2;
   background:
     linear-gradient(
       180deg,
-      #0b0f19 0%,
-      #06080f 100%
+      #2d3053 0%,
+      #2a365f 100%
     );
 
   color: #ffffff;
@@ -444,12 +446,14 @@ z-index: 2;
 }
 
 .experience-head h2{
-  font-family: "Plus Jakarta Sans", Inter, sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing:-0.02em;
-  color:white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 450;
+  letter-spacing: -0.015em;
+  color: white;
 }
+
 
 .experience-head p{
   color: rgba(255,255,255,0.75);
@@ -627,7 +631,7 @@ z-index: 2;
 .projects-head{
   
   position: relative;
-  padding: 20px 24px;
+  padding: 10px;
   border-radius: 10px;
   color: white;
   background:
@@ -664,9 +668,14 @@ z-index: 2;
   position:relative;
   z-index:2;
 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 450;
+  letter-spacing: -0.015em;
+  color: white;
+
   margin: 0 0 8px;
-  font-size: 30px;
-  letter-spacing: -0.02em;
 
   margin-bottom: 0px;
 
