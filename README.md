@@ -1,13 +1,24 @@
 Hi, I’m Katya Serechenko a Computer Science student @ Florida State University
 
 
-Portfolio: https://kittyyykattt.github.io
+### Live Portfolio 
+https://kittyyykattt.github.io
 
-Projects
 
-TheraOffice 
+## Projects
+
+### Nole Path 
+Repo: https://github.com/kittyyykattt/Nole-Path?tab=readme-ov-file
+
+Live Demo:
+https://kittyyykattt.github.io/Nole-Path/
+
+
+### TheraOffice 
 Repo: https://github.com/kittyyykattt/TheraOffice
 
+
+ --- 
 Network Connectivity
 https://github.com/kittyyykattt/AS_Connectivity
 
