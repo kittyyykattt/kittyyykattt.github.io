@@ -167,107 +167,73 @@ setInterval(() => {
   }
 }, 800);
 
-// ===== Project Modal =====
-
-const projectCards = Array.from(document.querySelectorAll(".project-card"));
+const cards = document.querySelectorAll(".project-card");
 const overlay = document.getElementById("projectOverlay");
-const modalHost = document.getElementById("projectModalHost");
+const modalHostRoot = document.getElementById("projectModalHost");
 
-let openCard = null;        // original card reference
-let lastFocusedEl = null;   // for focus restore
+let activeHost = null;
 
-function openProjectModal(card){
-  if (!overlay || !modalHost || !card) return;
+function closeModal() {
+  if (!activeHost) return;
 
-  // If another is open, close first
-  if (openCard) closeProjectModal();
-
-  lastFocusedEl = document.activeElement;
-
-  // Activate overlay + host
-  overlay.classList.add("active");
-  overlay.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
-
-  // Clone the card into the modal host
-  const clone = card.cloneNode(true);
-  clone.classList.add("project-modal-card");
-  clone.classList.remove("active"); // just in case
-  clone.setAttribute("role", "dialog");
-  clone.setAttribute("aria-modal", "true");
-  clone.setAttribute("tabindex", "-1");
-
-  // Optional: stop card-click inside modal from re-triggering open
-  clone.addEventListener("click", (e) => {
-    // allow links to work normally
-    if (e.target.closest("a")) return;
-    // clicking inside modal does nothing
-    e.stopPropagation();
-  });
-
-  // Put clone in host
-  modalHost.innerHTML = "";
-  modalHost.hidden = false;
-  modalHost.appendChild(clone);
-
-  openCard = card;
-
-  // Focus the modal for keyboard users
-  clone.focus({ preventScroll: true });
-}
-
-function closeProjectModal(){
-  if (!overlay || !modalHost) return;
-
+  modalHostRoot.innerHTML = "";
   overlay.classList.remove("active");
-  overlay.setAttribute("aria-hidden", "true");
-
-  modalHost.innerHTML = "";
-  modalHost.hidden = true;
-
   document.body.classList.remove("modal-open");
-  openCard = null;
 
-  if (lastFocusedEl && typeof lastFocusedEl.focus === "function"){
-    lastFocusedEl.focus({ preventScroll: true });
-  }
-  lastFocusedEl = null;
+  activeHost = null;
 }
 
-// Open on card click (but let links behave normally)
-projectCards.forEach(card => {
-  card.setAttribute("aria-expanded", "false");
+cards.forEach((card) => {
+  const openModal = () => {
+    if (activeHost) return;
+
+    // clone the card
+    const clone = card.cloneNode(true);
+    clone.classList.add("project-modal-card");
+    clone.classList.remove("project-card");
+
+    // add a close button to the clone
+    const closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.className = "project-close";
+    closeBtn.setAttribute("aria-label", "Close project details");
+    closeBtn.innerHTML = "✕";
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeModal();
+    });
+
+    clone.prepend(closeBtn);
+
+    // host (full screen)
+    const host = document.createElement("div");
+    host.className = "project-modal-host";
+    host.appendChild(clone);
+    modalHostRoot.appendChild(host);
+
+    // show overlay + lock scroll
+    overlay.classList.add("active");
+    document.body.classList.add("modal-open");
+
+    // click outside the card closes (host covers whole screen)
+    host.addEventListener("click", (e) => {
+      if (e.target === host) closeModal();
+    });
+
+    activeHost = host;
+  };
 
   card.addEventListener("click", (e) => {
-    if (e.target.closest("a")) return; // link clicks should not open modal
-    openProjectModal(card);
+    // if user clicked a link inside the card, don't open modal
+    if (e.target.closest("a")) return;
+    openModal();
   });
 
-  // Keyboard: Enter/Space opens
   card.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " "){
-      e.preventDefault();
-      openProjectModal(card);
-    }
+    if (e.key === "Enter") openModal();
   });
 });
 
-// Click background to close
-if (overlay){
-  overlay.addEventListener("click", closeProjectModal);
-}
-
-// Click outside modal (on host background) closes too
-if (modalHost){
-  modalHost.addEventListener("click", (e) => {
-    // if click lands on the host backdrop (not inside the modal card)
-    if (e.target === modalHost) closeProjectModal();
-  });
-}
-
-// Esc to close
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape"){
-    closeProjectModal();
-  }
+  if (e.key === "Escape") closeModal();
 });

@@ -12,7 +12,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -58,7 +58,7 @@
         <div class="container hero-grid">
           <div class="hero-copy">
             <h1 class="headline">Katya Serechenko</h1>
-            <p class="eyebrow">Computer Science Student &amp; Software Engineer</p>
+            <p class="eyebrow">Software Engineer | Danfoss Intern</p>
             <p class="lead">
               Lab &amp; Software Engineering Intern at Danfoss, working with instrumentation and automation,
               including Python, C++, MATLAB, and LabVIEW. Hands-on experience developing full-stack applications,
@@ -103,7 +103,7 @@
     <!-- EXPERIENCE -->
     <section id="experience" class="section">
       <div class="container">
-        <div class="section-head">
+<div class="section-head experience-head">
           <h2>Professional Experience & Leadership</h2>
         </div>
 
@@ -130,7 +130,6 @@
             <ul class="bullets">
               <li>Evaluating and debugging solutions in C#, C++, and Python with emphasis on correctness and logical validation</li>
               <li>Reviewing algorithmic outputs for accuracy and efficiency to support model evaluation pipelines</li>
-              <li>Improving code-based datasets by validating and correcting outputs for higher reliability</li>
             </ul>
           </article>
 
@@ -180,7 +179,7 @@
     <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
-        <div class="section-head">
+<div class="section-head projects-head">
           <h2>Featured Projects</h2>
         </div>
 
@@ -234,7 +233,7 @@
           >
             <div class="card-image">
               <img
-                src="assets/theraoffice-ex.png"
+                src="assets/theraOffice-ex.png"
                 alt="TheraOffice medical management system dashboard"
                 loading="lazy"
               />
@@ -242,13 +241,12 @@
 
             <div class="card-top">
               <h2>TheraOffice</h2>
-              <p class="muted">.NET MAUI • ASP.NET Core • REST APIs • Full-Stack</p>
+              <p class="muted">.NET MAUI • REST APIs • Full-Stack</p>
             </div>
 
             <p class="muted">
               Cross-platform medical office management system using .NET MAUI
-              and ASP.NET Core. Implemented RESTful services, structured domain models,
-              and persistent storage to support real-world clinical workflows including
+              and ASP.NET Core. Supports real-world clinical workflows including
               patient records, appointments, and diagnoses.
             </p>
 
@@ -300,36 +298,53 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Get In Touch</h2>
-          <p class="muted">Let’s connect — I’m always open to opportunities and collaborations.</p>
-        </div>
+<section id="contact" class="section">
+  <div class="container">
 
-        <div class="contact-grid">
-          <div class="contact-card">
-            <h3>Email</h3>
-            <p class="muted"><a class="link" href="mailto:yserechenko@gmail.com">yserechenko@gmail.com</a></p>
-          </div>
+    <div class="section-head">
+      <h2>Get In Touch</h2>
+      <p class="muted">
+        Let’s connect — I’m always open to opportunities and collaborations.
+      </p>
+    </div>
 
-          <div class="contact-card">
-            <h3>LinkedIn</h3>
-            <p class="muted"><a class="link" href="https://www.linkedin.com/in/katya-serechenko-84a175351" target="_blank" rel="noreferrer">Connect on LinkedIn ↗</a></p>
-          </div>
+    <div class="contact-grid">
 
-          <div class="contact-card">
-            <h3>GitHub</h3>
-            <p class="muted"><a class="link" href="https://github.com/kittyyykattt" target="_blank" rel="noreferrer">View Projects ↗</a></p>
-          </div>
-
-          <div class="contact-card">
-            <h3>Location</h3>
-            <p class="muted">Tallahassee, FL</p>
-          </div>
-        </div>
+      <div class="contact-card">
+        <h3>Email</h3>
+        <p class="contact-sub">
+          <a href="mailto:yserechenko@gmail.com">
+            yserechenko@gmail.com
+          </a>
+        </p>
       </div>
-    </section>
+
+      <a class="contact-card card-linkedin"
+         href="https://www.linkedin.com/in/katya-serechenko-84a175351"
+         target="_blank"
+         rel="noreferrer">
+        <h3>Connect with me</h3>
+        <p class="contact-sub">LinkedIn ↗</p>
+      </a>
+
+      <a class="contact-card card-github"
+         href="https://github.com/kittyyykattt"
+         target="_blank"
+         rel="noreferrer">
+        <h3>View my work</h3>
+        <p class="contact-sub">GitHub ↗</p>
+      </a>
+
+      <div class="contact-card">
+        <h3>Location</h3>
+        <p class="contact-sub">Tallahassee, FL</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
   </main>
 
   <footer class="footer">
@@ -340,7 +355,7 @@
 
   <!-- Modal overlay (click background to close) -->
   <div class="project-overlay" id="projectOverlay" aria-hidden="true"></div>
-
+<div id="projectModalHost"></div>
   <script src="script.js"></script>
 </body>
 </html>
