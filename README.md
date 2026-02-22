@@ -22,6 +22,9 @@ Repo: https://github.com/kittyyykattt/TheraOffice
 Network Connectivity
 https://github.com/kittyyykattt/AS_Connectivity
 
+Mood Camera
+https://github.com/kittyyykattt/mood-camera
+
 HashTable Spell Checker
 https://github.com/kittyyykattt/Hash-Table-Spell-Checker
 
