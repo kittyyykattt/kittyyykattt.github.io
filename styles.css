@@ -634,12 +634,7 @@ z-index: 2;
   padding: 10px;
   border-radius: 10px;
   color: white;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(75, 20, 30, 0.85),   /* garnet tint */
-      rgba(8, 78, 57, 0.71)   /* green tint */
-    );
+  background: black;
 
   margin-bottom: 10px;
   overflow: hidden;
