@@ -4,7 +4,7 @@
 
 **Computer Science Student @ Florida State University**
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-kittyyykattt.github.io-560738?style=flat-square&labelColor=fcd0da&color=560738)](https://kittyyykattt.github.io)
+[![Portfolio](https://img.shields.io/badge/Portfolio-katyaserechenko.com-560738?style=flat-square&labelColor=fcd0da&color=560738)](https://katyaserechenko.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-katya--serechenko-560738?style=flat-square&logo=linkedin&labelColor=fcd0da&color=560738)](https://linkedin.com/in/katya-serechenko-84a175351)
 
 </div>
@@ -15,10 +15,11 @@
 
 | Project | Description | Stack |
 |---|---|---|
-| [**Nole Path**](https://github.com/kittyyykattt/Nole-Path) · [live ↗](https://kittyyykattt.github.io/Nole-Path/) | Campus navigation & course planning tool for FSU students | TypeScript/React |
+| [**Portfolio**](https://katyaserechenko.com) | Personal portfolio website | JS/HTML/CSS |
+| [**Nole Path**](https://github.com/kittyyykattt/Nole-Path) · [demo ↗](https://kittyyykattt.github.io/Nole-Path/) | Campus navigation & course planning tool for FSU students | TypeScript/React |
 | [**TheraOffice**](https://github.com/kittyyykattt/TheraOffice) | Therapy office management system remake | C#/.NET |
 | [**Mood Camera**](https://github.com/kittyyykattt/mood-camera) | Emotion-detecting camera application | Python |
-| [**Instagram Followers**](https://github.com/kittyyykattt/insta-connections) | Tool to find who doesn't follow you back | JavaScript/HTML/CSS |
+| [**Instagram Followers**](https://github.com/kittyyykattt/insta-connections) | Tool to find who doesn't follow you back | JS/HTML/CSS |
 
 ---
 
