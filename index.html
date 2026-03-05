@@ -3,505 +3,874 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Katya Serechenko | Portfolio</title>
+  <title>Katya Serechenko | Software Engineer</title>
   <meta name="description" content="Katya Serechenko — Computer Science student at Florida State University. Portfolio, projects, and experience." />
   <meta name="author" content="Katya Serechenko" />
+  <meta name="google-site-verification" content="ZGH0aXUb-21W2ugnb8x-qlTpp3aAtLVju-98ycdfcPc" />
+  <meta name="keywords" content="Katya Serechenko, Software Engineer, FSU Computer Science, Florida State University, AI Developer, Full Stack Developer, Danfoss Intern">
+  <meta property="og:title" content="Katya Serechenko | Software Engineer">
+  <meta property="og:description" content="Computer Science student at Florida State University building full-stack and AI applications.">
+  <meta property="og:url" content="https://www.katyaserechenko.com">
+  <meta property="og:type" content="website">
 
-  <link rel="icon" type="image/png" href="headshot.png" />
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css" />
-    <meta name="google-site-verification" content="ZGH0aXUb-21W2ugnb8x-qlTpp3aAtLVju-98ycdfcPc" />
-  <title>Katya Serechenko | Software Engineer | Florida State University</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<meta name="description" content="Katya Serechenko is a Computer Science student at Florida State University specializing in software engineering, AI/ML, and full-stack development.">
+    :root {
+      --cream: #f5f0e8;
+      --cream2: #ede8de;
+      --cream3: #e4ddd0;
+      --ink: #0f0d0a;
+      --ink2: #1e1a15;
+      --red: #c8391a;
+      --warm-mid: #7a6f62;
+      --warm-faint: #b5a99a;
+      --border: rgba(15,13,10,0.1);
+      --border-strong: rgba(15,13,10,0.22);
+      --font-serif: 'Playfair Display', serif;
+      --font-mono: 'DM Mono', monospace;
+      --font-sans: 'DM Sans', sans-serif;
+    }
 
-<meta name="keywords" content="Katya Serechenko, Software Engineer, FSU Computer Science, Florida State University, AI Developer, Full Stack Developer, Danfoss Intern">
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-<meta name="author" content="Katya Serechenko">
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
 
-<meta property="og:title" content="Katya Serechenko | Software Engineer">
-<meta property="og:description" content="Computer Science student at Florida State University building full-stack and AI applications.">
-<meta property="og:url" content="https://www.katyaserechenko.com">
-<meta property="og:type" content="website">
+    #cursor {
+      position: fixed;
+      width: 10px; height: 10px;
+      background: var(--red);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s;
+      mix-blend-mode: multiply;
+    }
+    #cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, border-color 0.3s;
+    }
+    body.cursor-big #cursor { width: 18px; height: 18px; }
+    body.cursor-big #cursor-ring { width: 56px; height: 56px; border-color: var(--red); }
 
+    #spb {
+      position: fixed; top: 0; left: 0;
+      height: 3px; background: var(--red);
+      z-index: 2000; width: 0%;
+      transition: width 0.08s linear;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 900; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      transition: background 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(245,240,232,0.94);
+      backdrop-filter: blur(16px);
+      border-color: var(--border);
+    }
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-weight: 700; font-size: 1.05rem;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-brand em { color: var(--red); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--warm-mid); text-decoration: none;
+      letter-spacing: 0.05em; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--red); }
+
+    .mobile-toggle {
+      display: none; background: none;
+      border: 1.5px solid var(--border-strong);
+      color: var(--ink); width: 36px; height: 36px;
+      border-radius: 2px; font-size: 1rem; cursor: none;
+      align-items: center; justify-content: center;
+    }
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border-strong);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      z-index: 899; flex-direction: column; gap: 1.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-mono); font-size: 0.85rem;
+      color: var(--ink); text-decoration: none;
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+      overflow: hidden;
+    }
+    .hero-left {
+      padding: clamp(3rem, 8vh, 6rem) clamp(2rem, 5vw, 5rem);
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+    }
+    .hero-number {
+      position: absolute; top: clamp(3rem, 8vh, 5rem); right: 0;
+      font-family: var(--font-serif);
+      font-size: clamp(8rem, 14vw, 14rem);
+      font-weight: 900; color: transparent;
+      -webkit-text-stroke: 1px rgba(15,13,10,0.07);
+      line-height: 1; user-select: none; pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      color: var(--red); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;
+      opacity: 0; animation: riseIn 0.8s 0.1s forwards;
+    }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--red); }
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 900; line-height: 0.95;
+      letter-spacing: -0.02em; margin-bottom: 1.5rem;
+      opacity: 0; animation: riseIn 0.9s 0.2s forwards;
+    }
+    .hero-name .first { display: block; }
+    .hero-name .last { display: block; font-style: italic; color: var(--red); }
+    .hero-desc {
+      font-size: 0.97rem; color: var(--warm-mid);
+      max-width: 420px; line-height: 1.85; margin-bottom: 2.5rem;
+      opacity: 0; animation: riseIn 0.9s 0.35s forwards;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem;
+      opacity: 0; animation: riseIn 0.9s 0.45s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.8rem 1.8rem; font-family: var(--font-mono);
+      font-size: 0.72rem; letter-spacing: 0.08em;
+      text-decoration: none; cursor: none; transition: all 0.25s;
+    }
+    .btn-fill { background: var(--ink); color: var(--cream); }
+    .btn-fill:hover { background: var(--red); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,57,26,0.25); }
+    .btn-outline { border: 1.5px solid var(--border-strong); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--red); color: var(--red); transform: translateY(-2px); }
+
+    .hero-socials {
+      display: flex; gap: 0.75rem;
+      opacity: 0; animation: riseIn 0.9s 0.55s forwards;
+    }
+    .soc {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--border-strong);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: all 0.22s;
+    }
+    .soc svg { width: 15px; height: 15px; fill: var(--warm-mid); transition: fill 0.2s; }
+    .soc:hover { border-color: var(--red); background: var(--red); }
+    .soc:hover svg { fill: #fff; }
+
+    .hero-right {
+      position: relative; background: var(--ink2); overflow: hidden;
+      opacity: 0; animation: fadeIn 1.2s 0.3s forwards;
+    }
+    .hero-right img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block; filter: sepia(15%) contrast(1.05);
+      mix-blend-mode: luminosity; opacity: 0.75;
+    }
+    .hero-right-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(200,57,26,0.18) 0%, rgba(15,13,10,0.35) 100%);
+    }
+    .hero-badge {
+      position: absolute; bottom: 2.5rem; left: 2rem; right: 2rem;
+      background: var(--cream); padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .badge-stat { text-align: center; }
+    .badge-num {
+      font-family: var(--font-serif); font-size: 1.8rem;
+      font-weight: 900; color: var(--red); line-height: 1;
+    }
+    .badge-label {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      color: var(--warm-mid); letter-spacing: 0.1em;
+      text-transform: uppercase; margin-top: 4px;
+    }
+    .badge-div { width: 1px; height: 40px; background: var(--border-strong); }
+
+    @keyframes riseIn { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+    /* TICKER */
+    .ticker {
+      background: var(--ink); color: var(--cream);
+      height: 44px; overflow: hidden;
+      display: flex; align-items: center;
+      border-top: 3px solid var(--red);
+    }
+    .ticker-track {
+      display: flex; gap: 0;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      font-family: var(--font-mono); font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0 2.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .ticker-item::after { content: '✦'; color: var(--red); font-size: 0.6rem; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
+    section { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+    .section-header {
+      display: flex; align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1.5px solid var(--border-strong);
+      padding-bottom: 1rem; margin-bottom: 3rem; gap: 1rem;
+    }
+    .section-kicker {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      color: var(--red); letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900; letter-spacing: -0.02em; line-height: 1;
+    }
+    .section-num {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900;
+      color: transparent; -webkit-text-stroke: 1.5px var(--border-strong);
+      line-height: 1; flex-shrink: 0;
+    }
+
+    /* EXPERIENCE */
+    #experience { background: var(--cream); }
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-row {
+      display: grid; grid-template-columns: 180px 1fr auto;
+      gap: 2rem; padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative; transition: background 0.2s; align-items: start;
+    }
+    .exp-row::before {
+      content: ''; position: absolute;
+      top: 0; left: -clamp(1.5rem, 5vw, 4rem);
+      right: -clamp(1.5rem, 5vw, 4rem); bottom: 0;
+      background: var(--cream2); opacity: 0;
+      transition: opacity 0.25s; z-index: 0;
+    }
+    .exp-row:hover::before { opacity: 1; }
+    .exp-row > * { position: relative; z-index: 1; }
+    .exp-meta { padding-top: 3px; }
+    .exp-company { font-family: var(--font-serif); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .exp-time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--warm-faint); letter-spacing: 0.06em; }
+    .exp-time .live {
+      display: inline-block; width: 5px; height: 5px;
+      background: var(--red); border-radius: 50%;
+      margin-right: 5px; vertical-align: middle;
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .exp-role {
+      font-family: var(--font-serif); font-size: 1.15rem;
+      font-weight: 700; margin-bottom: 0.75rem; letter-spacing: -0.01em;
+    }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .exp-bullets li {
+      font-size: 0.87rem; color: var(--warm-mid);
+      padding-left: 1.2rem; position: relative; line-height: 1.65;
+    }
+    .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--warm-faint); }
+    .exp-tag {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--warm-mid); border: 1px solid var(--border);
+      padding: 0.3rem 0.65rem; align-self: start;
+      white-space: nowrap; transition: all 0.2s;
+    }
+    .exp-row:hover .exp-tag { border-color: var(--red); color: var(--red); }
+
+    /* PROJECTS */
+    #projects { background: var(--cream2); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; border: 1.5px solid var(--border-strong);
+    }
+    .proj-card {
+      padding: 2rem 1.75rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative; cursor: none; overflow: hidden;
+      transition: background 0.25s;
+    }
+    .proj-card:hover { background: var(--cream); }
+    .proj-card:nth-child(3n) { border-right: none; }
+    .proj-card:nth-last-child(-n+3) { border-bottom: none; }
+    .proj-card::after {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 0; height: 0; border-style: solid;
+      border-width: 0; border-color: transparent var(--red) transparent transparent;
+      transition: border-width 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+    .proj-card:hover::after { border-width: 0 36px 36px 0; }
+    .proj-index {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      color: var(--warm-faint); margin-bottom: 1.2rem; display: block;
+    }
+    .proj-title {
+      font-family: var(--font-serif); font-size: 1.25rem;
+      font-weight: 700; letter-spacing: -0.01em;
+      margin-bottom: 0.6rem; line-height: 1.2; transition: color 0.2s;
+    }
+    .proj-card:hover .proj-title { color: var(--red); }
+    .proj-type {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      color: var(--warm-faint); letter-spacing: 0.06em; margin-bottom: 1rem;
+    }
+    .proj-desc { font-size: 0.85rem; color: var(--warm-mid); line-height: 1.7; margin-bottom: 1.5rem; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
+    .proj-tag {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      padding: 0.2rem 0.55rem; background: var(--cream3);
+      color: var(--warm-mid); letter-spacing: 0.05em;
+    }
+    .proj-link {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      color: var(--warm-mid); text-decoration: none;
+      letter-spacing: 0.06em; display: inline-flex;
+      align-items: center; gap: 5px; transition: color 0.2s;
+    }
+    .proj-link:hover { color: var(--red); }
+
+    /* SKILLS */
+    #skills { background: var(--ink); color: var(--cream); }
+    #skills .section-title { color: var(--cream); }
+    #skills .section-kicker { color: var(--red); }
+    #skills .section-header { border-color: rgba(245,240,232,0.12); }
+    #skills .section-num { -webkit-text-stroke-color: rgba(245,240,232,0.12); }
+    .skills-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+    .skills-intro {
+      font-family: var(--font-serif); font-size: 1.5rem;
+      font-style: italic; line-height: 1.5; color: rgba(245,240,232,0.65);
+    }
+    .skills-intro strong { color: var(--cream); font-style: normal; }
+    .skills-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .skill-block-label {
+      font-family: var(--font-mono); font-size: 0.6rem;
+      color: var(--red); letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 1rem; padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(245,240,232,0.1);
+    }
+    .skill-block-items { display: flex; flex-direction: column; gap: 0.5rem; }
+    .skill-item {
+      font-size: 0.9rem; color: rgba(245,240,232,0.72);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .skill-item::before {
+      content: ''; width: 3px; height: 3px;
+      background: var(--red); border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--cream); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .contact-big-text {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.03em; margin-bottom: 2rem;
+    }
+    .contact-big-text em { color: var(--red); font-style: italic; }
+    .contact-body { font-size: 0.95rem; color: var(--warm-mid); line-height: 1.8; margin-bottom: 2rem; }
+    .contact-email-link {
+      display: inline-block; font-family: var(--font-mono); font-size: 0.85rem;
+      color: var(--ink); text-decoration: none;
+      border-bottom: 2px solid var(--red); padding-bottom: 2px;
+      transition: color 0.2s; letter-spacing: 0.02em;
+    }
+    .contact-email-link:hover { color: var(--red); }
+    .contact-links { display: flex; flex-direction: column; border: 1.5px solid var(--border-strong); }
+    .contact-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 2rem; text-decoration: none; color: var(--ink);
+      border-bottom: 1px solid var(--border); transition: background 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .contact-row::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--red); transform: scaleY(0); transition: transform 0.25s;
+    }
+    .contact-row:hover { background: var(--cream2); }
+    .contact-row:hover::before { transform: scaleY(1); }
+    .contact-row:last-child { border-bottom: none; }
+    .cr-label {
+      font-family: var(--font-mono); font-size: 0.62rem;
+      color: var(--warm-faint); letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    .cr-value { font-weight: 500; font-size: 0.95rem; }
+    .cr-arrow { font-size: 1.1rem; color: var(--warm-faint); transition: all 0.25s; }
+    .contact-row:hover .cr-arrow { color: var(--red); transform: translate(4px, -4px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink); color: rgba(245,240,232,0.5);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .footer-brand { font-family: var(--font-serif); font-style: italic; color: var(--cream); font-size: 1rem; }
+    .footer-mono { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; }
+    .footer-status {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 0.65rem;
+      color: rgba(245,240,232,0.5);
+    }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: blink 2s ease-in-out infinite; }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(15,13,10,0.7);
+      backdrop-filter: blur(8px); z-index: 800;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: auto; }
+    .modal {
+      background: var(--cream); border: 1.5px solid var(--border-strong);
+      max-width: 600px; width: 100%; padding: 2.5rem;
+      transform: translateY(16px); transition: transform 0.3s; position: relative;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: none; border: 1.5px solid var(--border-strong);
+      color: var(--warm-mid); width: 32px; height: 32px;
+      font-size: 0.9rem; cursor: none;
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .modal-close:hover { border-color: var(--red); color: var(--red); }
+    .modal-kicker { font-family: var(--font-mono); font-size: 0.65rem; color: var(--red); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .modal-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .modal-desc { font-size: 0.9rem; color: var(--warm-mid); line-height: 1.8; margin-bottom: 1.5rem; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2rem; }
+    .modal-tag { font-family: var(--font-mono); font-size: 0.62rem; padding: 0.3rem 0.7rem; background: var(--cream2); color: var(--warm-mid); letter-spacing: 0.05em; }
+    .modal-actions { display: flex; gap: 1rem; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { display: none; }
+      .hero-left { min-height: 100vh; }
+      .skills-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 860px) {
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      .proj-card:nth-child(3n) { border-right: 1px solid var(--border); }
+      .proj-card:nth-child(2n) { border-right: none; }
+      .exp-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .exp-tag { align-self: auto; width: fit-content; }
+      .nav-links { display: none; }
+      .mobile-toggle { display: flex; }
+    }
+    @media (max-width: 560px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .proj-card { border-right: none !important; }
+      .skills-blocks { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  </style>
 </head>
-
 <body>
-  <div id="scroll-progress" aria-hidden="true"><div id="scroll-progress-bar"></div></div>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="spb"></div>
 
-  <header class="site-header" id="top">
-    <div class="nav-shell">
-      <a class="brand" href="#top" aria-label="Go to top">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">Katya Serechenko</span>
-      </a>
-
-      <nav class="nav" aria-label="Primary">
-        <a class="nav-link" href="#home">Home</a>
-        <a class="nav-link" href="#experience">Experience</a>
-        <a class="nav-link" href="#projects">Projects</a>
-        <a class="nav-link" href="#skills">Skills</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </nav>
-
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer">
-        <span class="sr-only">Open menu</span>
-        <span class="hamburger" aria-hidden="true"></span>
-      </button>
-    </div>
-
-    <div class="nav-drawer" id="navDrawer" hidden>
-      <a class="drawer-link" href="#home">Home</a>
-      <a class="drawer-link" href="#experience">Experience</a>
-      <a class="drawer-link" href="#projects">Projects</a>
-      <a class="drawer-link" href="#skills">Skills</a>
-      <a class="drawer-link" href="#contact">Contact</a>
-    </div>
-  </header>
-
-  <div class="hero-wrap">
-    <canvas id="particles" aria-hidden="true"></canvas>
-
-    <main>
-      <section id="home" class="section hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <h1 class="headline">Katya Serechenko</h1>
-            <p class="eyebrow">Software Engineer | Danfoss Intern</p>
-            <p class="lead">
-              Lab &amp; Software Engineering Intern at Danfoss, working with instrumentation and automation,
-              including Python, C++, MATLAB, and LabVIEW. Hands-on experience developing full-stack applications,
-              modernizing legacy test systems, and supporting data-driven engineering workflows.
-            </p>
-
-            <p class="lead">Open to Internships • Research • SWE roles</p>
-
-            <div class="cta-row">
-              <a class="btn btn-primary" href="#projects">View My Work</a>
-              <a class="btn btn-ghost" href="#contact">Get In Touch</a>
-              <a class="btn btn-ghost" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
-            </div>
-          </div>
-
-          <div class="hero-card">
-            <div class="avatar-wrap">
-              <img class="headshot" src="assets/headshot.jpg" alt="Katya Serechenko headshot" loading="lazy">
-            </div>
-
-            <div class="hero-icons">
-              <a class="icon-btn" href="mailto:yserechenko@gmail.com">
-                <img src="assets/emailLogo.png" alt="Email">
-              </a>
-
-              <a class="icon-btn" href="https://www.linkedin.com/in/katya-serechenko-84a175351" target="_blank" rel="noreferrer">
-                <img src="assets/linkedlnLogo.png" alt="LinkedIn">
-              </a>
-
-              <a class="icon-btn" href="https://github.com/kittyyykattt" target="_blank" rel="noreferrer">
-                <img src="assets/githubLogo.png" alt="GitHub">
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-    </main>
+  <nav id="navbar">
+    <a class="nav-brand" href="#hero">Katya <em>Serechenko</em></a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="assets/resume.pdf" target="_blank" rel="noopener">Resume ↗</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle">☰</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
   </div>
 
-  <main class="page-content">
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <div class="container">
-<div class="section-head experience-head">
-          <h2>Professional Experience & Leadership</h2>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-number" aria-hidden="true">KS</div>
+      <div class="hero-eyebrow">CS @ Florida State University</div>
+      <h1 class="hero-name">
+        <span class="first">Katya</span>
+        <span class="last">Serechenko</span>
+      </h1>
+      <p class="hero-desc">
+        Software engineer building full-stack apps, AI systems, and engineering tools.
+        Currently interning at Danfoss — open to internships, SWE positions, and projects.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-fill" href="#projects">View Projects</a>
+        <a class="btn btn-outline" href="#contact">Get In Touch</a>
+        <a class="btn btn-outline" href="assets/resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+      </div>
+      <div class="hero-socials">
+        <a class="soc" href="https://github.com/kittyyykattt" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23A11.52 11.52 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+        </a>
+        <a class="soc" href="https://www.linkedin.com/in/katya-serechenko-84a175351" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a class="soc" href="mailto:katyaserechenko@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.91L12 10.09l9.455-6.27h.909c.904 0 1.636.732 1.636 1.636z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="assets/headshot.jpg" alt="Katya Serechenko" loading="eager">
+      <div class="hero-right-overlay"></div>
+      <div class="hero-badge">
+        <div class="badge-stat">
+          <div class="badge-num">10+</div>
+          <div class="badge-label">Projects</div>
         </div>
+        <div class="badge-div"></div>
+        <div class="badge-stat">
+          <div class="badge-num">3+</div>
+          <div class="badge-label">Years Coding</div>
+        </div>
+        <div class="badge-div"></div>
+        <div class="badge-stat">
+          <div class="badge-num">FSU</div>
+          <div class="badge-label">CS Student</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="cards">
-          <article class="card">
-            <div class="card-top">
-              <h3>Lab &amp; Software Engineering Intern</h3>
-              <p class="muted">Danfoss • Tallahassee, FL</p>
-            </div>
-            <p class="muted">Febuary 2026 — Present</p>
-            <ul class="bullets">
-              <li>Developed Python-based real-time data acquisition tools integrating hardware instrumentation APIs to automate compressor and chiller performance testing workflows</li>
-              <li>Refactored legacy LabVIEW/C++ systems into modular Python-driven, SQL-backed pipelines, improving data traceability and reducing manual processing overhead</li>
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Python</span><span class="ticker-item">C++</span><span class="ticker-item">Full-Stack Development</span><span class="ticker-item">React · Next.js</span><span class="ticker-item">Computer Vision</span><span class="ticker-item">Data Acquisition</span><span class="ticker-item">AI Integration</span><span class="ticker-item">Danfoss Intern</span><span class="ticker-item">FSU Computer Science</span><span class="ticker-item">Open to Opportunities</span><span class="ticker-item">Python</span><span class="ticker-item">C++</span><span class="ticker-item">Full-Stack Development</span><span class="ticker-item">React · Next.js</span><span class="ticker-item">Computer Vision</span><span class="ticker-item">Data Acquisition</span><span class="ticker-item">AI Integration</span><span class="ticker-item">Danfoss Intern</span><span class="ticker-item">FSU Computer Science</span><span class="ticker-item">Open to Opportunities</span>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div><div class="section-kicker">02 / Experience</div><h2 class="section-title">Where I've Worked</h2></div>
+        <div class="section-num" aria-hidden="true">02</div>
+      </div>
+      <div class="exp-list">
+        <div class="exp-row reveal">
+          <div class="exp-meta"><div class="exp-company">Danfoss</div><div class="exp-time"><span class="live"></span>Feb 2026 — Now</div></div>
+          <div class="exp-content">
+            <div class="exp-role">Lab & Software Engineering Intern</div>
+            <ul class="exp-bullets">
+              <li>Developed Python real-time data acquisition tools integrating hardware instrumentation APIs to automate compressor and chiller performance testing</li>
+              <li>Refactored legacy LabVIEW/C++ systems into modular Python-driven, SQL-backed pipelines, improving data traceability</li>
               <li>Designed automated calibration scripts reducing manual test configuration time</li>
-              <li>Configure, calibrate, and troubleshoot data acquisition hardware, improving test accuracy and operational efficiency</li>
             </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-top">
-              <h3>Software & AI Evaluation Engineer</h3>
-              <p class="muted">Outlier • Freelance</p>
-            </div>
-            <p class="muted">Nov 2025 — Present</p>
-            <ul class="bullets">
+          </div>
+          <div class="exp-tag">Current</div>
+        </div>
+        <div class="exp-row reveal">
+          <div class="exp-meta"><div class="exp-company">Outlier</div><div class="exp-time"><span class="live"></span>Nov 2025 — Now</div></div>
+          <div class="exp-content">
+            <div class="exp-role">Software & AI Evaluation Engineer</div>
+            <ul class="exp-bullets">
               <li>Evaluated and stress-tested C++ and ML model outputs for performance, correctness, and edge-case behavior</li>
               <li>Identified failure modes in AI-generated code and improved reliability through systematic debugging</li>
               <li>Conducted structured evaluation of model reasoning accuracy across diverse technical prompts</li>
             </ul>
-          </article>
+          </div>
+          <div class="exp-tag">Freelance</div>
+        </div>
 
-          <article class="card">
-            <div class="card-top">
-              <h3>Front-End Developer</h3>
-              <p class="muted">Seminole Innovators • Student Team</p>
-            </div>
-            <p class="muted">August 2025 — Present</p>
-            <ul class="bullets">
-              <li>Building responsive UIs with React/Tailwind for a football-themed product (Touchdown Tycoon / AI Dynasty).</li>
-              <li>Implementing component systems, interactions, and polish</li>
-              <li>Shipping iterative improvements via GitHub workflows and code reviews.</li>
+        <div class="exp-row reveal">
+          <div class="exp-meta"><div class="exp-company">WiCS @ FSU</div><div class="exp-time">Aug 2025 — Now</div></div>
+          <div class="exp-content">
+            <div class="exp-role">Mentorship Director</div>
+            <ul class="exp-bullets"><li>Lead STEM mentorship program pairing students with industry mentors and organizing technical workshops</li></ul>
+          </div>
+          <div class="exp-tag">Leadership</div>
+        </div>
+        <div class="exp-row reveal">
+          <div class="exp-meta"><div class="exp-company">Ekkai</div><div class="exp-time">2024 — Now</div></div>
+          <div class="exp-content">
+            <div class="exp-role">Founder</div>
+            <ul class="exp-bullets">
+              <li>Designed and managed brand's digital presence; built web-based assets for product presentation</li>
+              <li>Managed inventory, fulfillment, customer communication; secured micro-grant through College of Entrepreneurship</li>
             </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-top">
-              <h3>Mentorship Director</h3>
-              <p class="muted">Women in Computer Science (WiCS)</p>
-            </div>
-            <p class="muted">August 2025 — Present</p>
-            <ul class="bullets">
-              <li>Lead mentorship program pairing students with industry mentors and organizing technical workshops</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-top">
-              <h3>Founder</h3>
-              <p class="muted">Ekkai • Handmade goods</p>
-            </div>
-            <p class="muted">2024 — Present</p>
-            <ul class="bullets">
-              <li>Designed and managed the brand’s digital presence and customer-facing workflows</li>
-              <li>Built and maintained web-based assets supporting product presentation and marketing</li>
-              <li>Managed inventory, fulfillment, and customer communication end-to-end</li>
-              <li>Secured micro-grant funding through the College of Entrepreneurship</li>
-            </ul>
-          </article>
+          </div>
+          <div class="exp-tag">Founder</div>
         </div>
       </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <div class="container">
-<div class="section-head">
-          <h2>Featured Projects</h2>
-        </div>
-
-        <div class="cards">
-
-          <article
-            class="card card-nolepath project-card"
-            tabindex="0"
-            role="button"
-            aria-haspopup="dialog"
-            aria-expanded="false"
-            aria-label="Open project details: Nole Path"
-          >
-            <div class="card-image">
-              <img
-                src="assets/dashboard-NP.png"
-                alt="Nole Path dashboard showing AI-powered internship tracking and student workflow"
-                loading="lazy"
-              />
-            </div>
-
-            <div class="card-top">
-              <h2>Nole Path</h2>
-              <p class="muted">AI Career Platform • Full-Stack Web App</p>
-            </div>
-
-            <p class="muted">
-              AI-driven internship platform that matches students to opportunities,
-              analyzes resumes, and guides career readiness through an intelligent coaching interface.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">Full-stack</span>
-              <span class="tag">AI Integration</span>
-              <span class="tag">Typescript</span>
-            </div>
-
-            <div class="card-actions">
-              <a class="link" href="https://kittyyykattt.github.io/Nole-Path/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
-              <a class="link" href="https://github.com/kittyyykattt/Nole-Path" target="_blank" rel="noopener noreferrer">View Code ↗</a>
-            </div>
-          </article>
-
-          <article
-            class="card card-thera project-card"
-            tabindex="0"
-            role="button"
-            aria-haspopup="dialog"
-            aria-expanded="false"
-            aria-label="Open project details: TheraOffice"
-          >
-            <div class="card-image">
-              <img
-                src="assets/theraOffice-ex.png"
-                alt="TheraOffice medical management system dashboard"
-                loading="lazy"
-              />
-            </div>
-
-            <div class="card-top">
-              <h2>TheraOffice</h2>
-              <p class="muted">.NET MAUI • REST APIs • Full-Stack</p>
-            </div>
-
-            <p class="muted">
-              Cross-platform medical office management system using .NET MAUI
-              and ASP.NET Core. Supports real-world clinical workflows including
-              patient records, appointments, and diagnoses.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">C#</span>
-              <span class="tag">Desktop</span>
-              <span class="tag">API Design</span>
-              <span class="tag">.NET</span>
-            </div>
-
-            <div class="card-actions">
-              <a class="link" href="https://github.com/kittyyykattt/TheraOffice" target="_blank" rel="noopener noreferrer">View Code ↗</a>
-            </div>
-          </article>
-
-          <article
-            class="card card-mood project-card"
-            tabindex="0"
-            role="button"
-            aria-haspopup="dialog"
-            aria-expanded="false"
-            aria-label="Open project details: Mood Camera"
-          >
-            <div class="card-top">
-              <h2>Mood Camera</h2>
-              <p class="muted">Computer Vision • Python</p>
-            </div>
-
-            <p class="muted">
-              Real-time emotion-detecting camera application powered by computer
-              vision. Classifies facial expressions live using machine learning
-              models, with a clean visual overlay.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">Python</span>
-              <span class="tag">Computer Vision</span>
-              <span class="tag">ML</span>
-            </div>
-
-            <div class="card-actions">
-              <a class="link" href="https://github.com/kittyyykattt/mood-camera" target="_blank" rel="noopener noreferrer">View Code ↗</a>
-            </div>
-          </article>
-
-          <article
-            class="card card-insta project-card"
-            tabindex="0"
-            role="button"
-            aria-haspopup="dialog"
-            aria-expanded="false"
-            aria-label="Open project details: Instagram Followers"
-          >
-            <div class="card-top">
-              <h2>Instagram Followers</h2>
-              <p class="muted">Web Tool • JS / HTML / CSS</p>
-            </div>
-
-            <p class="muted">
-              A lightweight browser-based tool that parses Instagram data exports
-              to reveal who doesn't follow you back — no third-party logins, fully
-              client-side and private.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">JavaScript</span>
-              <span class="tag">HTML/CSS</span>
-              <span class="tag">Privacy-first</span>
-            </div>
-
-            <div class="card-actions">
-              <a class="link" href="https://github.com/kittyyykattt/insta-connections" target="_blank" rel="noopener noreferrer">View Code ↗</a>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- ===== More Projects ===== -->
-        <div class="more-projects-head">
-          <h3>More Projects</h3>
-          <p class="muted">Algorithms, data structures &amp; systems work</p>
-        </div>
-
-        <div class="more-projects-grid">
-
-          <a class="more-card" href="https://github.com/kittyyykattt/AS_Connectivity" target="_blank" rel="noopener noreferrer">
-            <div class="more-card-icon">🌐</div>
-            <div>
-              <p class="more-card-title">Network Connectivity</p>
-              <p class="muted more-card-desc">Autonomous system network analysis</p>
-            </div>
-            <span class="more-card-arrow">↗</span>
-          </a>
-
-          <a class="more-card" href="https://github.com/kittyyykattt/Hash-Table-Spell-Checker" target="_blank" rel="noopener noreferrer">
-            <div class="more-card-icon">🔤</div>
-            <div>
-              <p class="more-card-title">Hash Table Spell Checker</p>
-              <p class="muted more-card-desc">Fast spell checking via hash tables</p>
-            </div>
-            <span class="more-card-arrow">↗</span>
-          </a>
-
-          <a class="more-card" href="https://github.com/kittyyykattt/Self-Organizing-Binary-Search-Tree" target="_blank" rel="noopener noreferrer">
-            <div class="more-card-icon">🌳</div>
-            <div>
-              <p class="more-card-title">Self-Organizing BST</p>
-              <p class="muted more-card-desc">Adaptive binary search tree implementation</p>
-            </div>
-            <span class="more-card-arrow">↗</span>
-          </a>
-
-          <a class="more-card" href="https://github.com/kittyyykattt/Queue-ADT-Flight-Route-Search-BFS" target="_blank" rel="noopener noreferrer">
-            <div class="more-card-icon">✈️</div>
-            <div>
-              <p class="more-card-title">Queue Flight Route Search</p>
-              <p class="muted more-card-desc">BFS-based flight route finder</p>
-            </div>
-            <span class="more-card-arrow">↗</span>
-          </a>
-
-          <a class="more-card" href="https://github.com/kittyyykattt/Vector-Matrix-Template-Library" target="_blank" rel="noopener noreferrer">
-            <div class="more-card-icon">📐</div>
-            <div>
-              <p class="more-card-title">Vector &amp; Matrix Template Library</p>
-              <p class="muted more-card-desc">C++ template library for linear algebra</p>
-            </div>
-            <span class="more-card-arrow">↗</span>
-          </a>
-
-          <a class="more-card" href="https://github.com/kittyyykattt/Calculator-Java-Application" target="_blank" rel="noopener noreferrer">
-            <div class="more-card-icon">🧮</div>
-            <div>
-              <p class="more-card-title">Calculator</p>
-              <p class="muted more-card-desc">Java desktop calculator application</p>
-            </div>
-            <span class="more-card-arrow">↗</span>
-          </a>
-
-          <a class="more-card" href="https://github.com/kittyyykattt/HWX" target="_blank" rel="noopener noreferrer">
-            <div class="more-card-icon">🚢</div>
-            <div>
-              <p class="more-card-title">Battleship</p>
-              <p class="muted more-card-desc">Java battleship game</p>
-            </div>
-            <span class="more-card-arrow">↗</span>
-          </a>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Technical Skills</h2>
-        </div>
-
-        <div class="skills-grid">
-          <div class="skill-card">
-            <h3>Programming</h3>
-            <p class="muted">C++ • C • Python • Java • JavaScript • C#</p>
-          </div>
-
-          <div class="skill-card">
-            <h3>Web</h3>
-            <p class="muted">React • Next.js • Tailwind • HTML/CSS • REST APIs</p>
-          </div>
-
-          <div class="skill-card">
-            <h3>Systems</h3>
-            <p class="muted">Linux/Unix • Git</p>
-          </div>
-
-          <div class="skill-card">
-            <h3>Data &amp; Tools</h3>
-            <p class="muted">SQL</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-<section id="contact" class="section">
-  <div class="container">
-
-    <div class="section-head">
-      <h2>Get In Touch</h2>
-      <p class="muted">
-        Let’s connect — I’m always open to opportunities and collaborations.
-      </p>
     </div>
+  </section>
 
-    <div class="contact-grid">
-
-      <div class="contact-card">
-        <h3>Email</h3>
-        <p class="contact-sub">
-          <a href="mailto:yserechenko@gmail.com">yserechenko@gmail.com</a>
-        </p>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div><div class="section-kicker">03 / Projects</div><h2 class="section-title">Selected Work</h2></div>
+        <div class="section-num" aria-hidden="true">03</div>
       </div>
-
-      <a class="contact-card card-linkedin"
-         href="https://www.linkedin.com/in/katya-serechenko-84a175351"
-         target="_blank"
-         rel="noreferrer">
-        <h3>Connect with me</h3>
-        <p class="contact-sub">LinkedIn ↗</p>
-      </a>
-
-      <a class="contact-card card-github"
-         href="https://github.com/kittyyykattt"
-         target="_blank"
-         rel="noreferrer">
-        <h3>View my work</h3>
-        <p class="contact-sub">GitHub ↗</p>
-      </a>
-
-      <div class="contact-card">
-        <h3>Location</h3>
-        <p class="contact-sub">Tallahassee, FL</p>
+      <div class="projects-grid reveal">
+        <div class="proj-card" data-modal data-title="Nole Path" data-subtitle="AI Career Platform · Full-Stack" data-desc="AI-driven internship platform that matches students to opportunities, analyzes resumes, and guides career readiness through an intelligent coaching interface. Built with TypeScript, Next.js, and integrated AI APIs." data-tags="Full-stack,AI Integration,TypeScript,Next.js" data-github="https://github.com/kittyyykattt/Nole-Path" data-demo="https://kittyyykattt.github.io/Nole-Path/">
+          <span class="proj-index">01</span>
+          <h3 class="proj-title">Nole Path</h3>
+          <div class="proj-type">AI Career Platform · Full-Stack</div>
+          <p class="proj-desc">AI-driven internship platform matching students to opportunities, analyzing resumes, and guiding career readiness.</p>
+          <div class="proj-tags"><span class="proj-tag">TypeScript</span><span class="proj-tag">Next.js</span><span class="proj-tag">AI</span></div>
+          <a class="proj-link" href="https://github.com/kittyyykattt/Nole-Path" target="_blank" onclick="event.stopPropagation()">GitHub ↗</a>
+        </div>
+        <div class="proj-card" data-modal data-title="TheraOffice" data-subtitle=".NET MAUI · REST APIs · Full-Stack" data-desc="Cross-platform medical office management system using .NET MAUI and ASP.NET Core. Supports patient records, appointments, and diagnoses." data-tags="C#,.NET MAUI,ASP.NET Core,REST APIs" data-github="https://github.com/kittyyykattt/TheraOffice">
+          <span class="proj-index">02</span>
+          <h3 class="proj-title">TheraOffice</h3>
+          <div class="proj-type">Medical Management System</div>
+          <p class="proj-desc">Cross-platform medical office system with .NET MAUI and ASP.NET Core, supporting clinical workflows end to end.</p>
+          <div class="proj-tags"><span class="proj-tag">C#</span><span class="proj-tag">.NET MAUI</span><span class="proj-tag">ASP.NET</span></div>
+          <a class="proj-link" href="https://github.com/kittyyykattt/TheraOffice" target="_blank" onclick="event.stopPropagation()">GitHub ↗</a>
+        </div>
+        <div class="proj-card" data-modal data-title="Mood Camera" data-subtitle="Computer Vision · Python · ML" data-desc="Real-time emotion-detecting camera application powered by computer vision. Classifies facial expressions live using ML models with a clean visual overlay." data-tags="Python,Computer Vision,ML,OpenCV" data-github="https://github.com/kittyyykattt/mood-camera">
+          <span class="proj-index">03</span>
+          <h3 class="proj-title">Mood Camera</h3>
+          <div class="proj-type">Computer Vision · ML</div>
+          <p class="proj-desc">Real-time emotion-detecting camera that classifies facial expressions live using ML models.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">OpenCV</span><span class="proj-tag">ML</span></div>
+          <a class="proj-link" href="https://github.com/kittyyykattt/mood-camera" target="_blank" onclick="event.stopPropagation()">GitHub ↗</a>
+        </div>
+        <div class="proj-card" data-modal data-title="Network Connectivity" data-subtitle="Graph Theory · C++ · Algorithms" data-desc="Autonomous system network analysis tool modeling topologies using BFS/DFS graph algorithms to identify connectivity patterns and optimize routing paths." data-tags="C++,BFS/DFS,Graph Theory,Algorithms" data-github="https://github.com/kittyyykattt/AS_Connectivity">
+          <span class="proj-index">04</span>
+          <h3 class="proj-title">Network Connectivity</h3>
+          <div class="proj-type">Graph Theory · Algorithms</div>
+          <p class="proj-desc">Network analysis using BFS/DFS to model topologies and identify connectivity patterns in autonomous systems.</p>
+          <div class="proj-tags"><span class="proj-tag">C++</span><span class="proj-tag">BFS/DFS</span><span class="proj-tag">Graphs</span></div>
+          <a class="proj-link" href="https://github.com/kittyyykattt/AS_Connectivity" target="_blank" onclick="event.stopPropagation()">GitHub ↗</a>
+        </div>
+        <div class="proj-card" data-modal data-title="Hash Table Spell Checker" data-subtitle="Data Structures · C++" data-desc="Fast spell checking system built on a custom hash table with O(1) average-case lookups and efficient spell correction suggestions." data-tags="C++,Hash Tables,Data Structures" data-github="https://github.com/kittyyykattt/Hash-Table-Spell-Checker">
+          <span class="proj-index">05</span>
+          <h3 class="proj-title">Hash Table Spell Checker</h3>
+          <div class="proj-type">Data Structures · C++</div>
+          <p class="proj-desc">High-speed spell checker built on a custom hash table with O(1) lookups and smart correction suggestions.</p>
+          <div class="proj-tags"><span class="proj-tag">C++</span><span class="proj-tag">Hash Tables</span></div>
+          <a class="proj-link" href="https://github.com/kittyyykattt/Hash-Table-Spell-Checker" target="_blank" onclick="event.stopPropagation()">GitHub ↗</a>
+        </div>
+        <div class="proj-card" data-modal data-title="Instagram Followers" data-subtitle="Browser Tool · JavaScript" data-desc="Lightweight browser-based tool that parses Instagram data exports to reveal who doesn't follow you back — fully client-side, no logins needed." data-tags="JavaScript,HTML/CSS,Privacy-first" data-github="https://github.com/kittyyykattt/insta-connections">
+          <span class="proj-index">06</span>
+          <h3 class="proj-title">Instagram Followers</h3>
+          <div class="proj-type">Browser Tool · JavaScript</div>
+          <p class="proj-desc">Client-side tool parsing Instagram exports to reveal non-followers — no logins, fully private.</p>
+          <div class="proj-tags"><span class="proj-tag">JavaScript</span><span class="proj-tag">Privacy-first</span></div>
+          <a class="proj-link" href="https://github.com/kittyyykattt/insta-connections" target="_blank" onclick="event.stopPropagation()">GitHub ↗</a>
+        </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div><div class="section-kicker">04 / Skills</div><h2 class="section-title">Technical Toolkit</h2></div>
+        <div class="section-num" aria-hidden="true">04</div>
+      </div>
+      <div class="skills-layout reveal">
+        <div class="skills-intro">Comfortable across the full stack — from <strong>systems-level C++</strong> to <strong>modern web</strong>, <strong>data acquisition</strong>, and <strong>AI integration</strong>.</div>
+        <div class="skills-blocks">
+          <div>
+            <div class="skill-block-label">Languages</div>
+            <div class="skill-block-items">
+              <div class="skill-item">C++</div><div class="skill-item">Python</div>
+              <div class="skill-item">JavaScript / TypeScript</div>
+              <div class="skill-item">Java</div><div class="skill-item">C</div><div class="skill-item">C#</div>
+            </div>
+          </div>
+          <div>
+            <div class="skill-block-label">Web & Frameworks</div>
+            <div class="skill-block-items">
+              <div class="skill-item">React · Next.js</div><div class="skill-item">Tailwind CSS</div>
+              <div class="skill-item">.NET MAUI / ASP.NET</div>
+              <div class="skill-item">REST APIs</div><div class="skill-item">HTML · CSS</div>
+            </div>
+          </div>
+          <div>
+            <div class="skill-block-label">Engineering Tools</div>
+            <div class="skill-block-items">
+              <div class="skill-item">LabVIEW · MATLAB</div>
+              <div class="skill-item">SQL · MySQL</div>
+              <div class="skill-item">Git · GitHub</div>
+            </div>
+          </div>
+          <div>
+            <div class="skill-block-label">AI</div>
+            <div class="skill-block-items">
+              <div class="skill-item">ML Model Evaluation</div>
+              <div class="skill-item">AI Integration</div>
+              <div class="skill-item">Bedrock</div>
 
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p class="muted">© <span id="year"></span> Katya Serechenko.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div><div class="section-kicker">05 / Contact</div><h2 class="section-title">Let's Connect</h2></div>
+        <div class="section-num" aria-hidden="true">05</div>
+      </div>
+      <div class="contact-layout reveal">
+        <div>
+          <h3 class="contact-big-text">Open to<br><em>great work</em></h3>
+          <p class="contact-body">If you have something interesting, let's talk.</p>
+          <a class="contact-email-link" href="mailto:katyaserechenko@gmail.com">katyaserechenko@gmail.com</a>
+        </div>
+        <div class="contact-links">
+          <a class="contact-row" href="https://www.linkedin.com/in/katya-serechenko-84a175351" target="_blank" rel="noreferrer">
+            <div><div class="cr-label">LinkedIn</div><div class="cr-value">Connect with me</div></div>
+            <span class="cr-arrow">↗</span>
+          </a>
+          <a class="contact-row" href="https://github.com/kittyyykattt" target="_blank" rel="noreferrer">
+            <div><div class="cr-label">GitHub</div><div class="cr-value">See my code</div></div>
+            <span class="cr-arrow">↗</span>
+          </a>
+          <a class="contact-row" href="assets/resume.pdf" target="_blank" rel="noopener">
+            <div><div class="cr-label">Resume</div><div class="cr-value">Download PDF</div></div>
+            <span class="cr-arrow">↓</span>
+          </a>
+          <div class="contact-row" style="cursor:default">
+            <div><div class="cr-label">Location</div><div class="cr-value">Tallahassee, FL</div></div>
+            <span class="cr-arrow" style="opacity:0.3">📍</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Katya Serechenko</div>
+    <div class="footer-mono">© <span id="year"></span> · katyaserechenko.com</div>
+    <div class="footer-status"><span class="status-dot"></span>Available for opportunities</div>
   </footer>
 
-   <!-- Modal overlay (click background to close) -->
-  <div class="project-overlay" id="projectOverlay" aria-hidden="true"></div>
-<div id="projectModalHost"></div>
-  <script src="script.js"></script>
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-kicker" id="modalKicker"></div>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const spb = document.getElementById('spb');
+    window.addEventListener('scroll', () => {
+      spb.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+    }, { passive: true });
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+    const cursor = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+    (function anim(){
+      cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+      rx+=(mx-rx)*0.14; ry+=(my-ry)*0.14;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(anim);
+    })();
+    document.querySelectorAll('a,button,[data-modal]').forEach(el=>{
+      el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-big'));
+      el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-big'));
+    });
+
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*60); io.unobserve(e.target); } });
+    },{threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    const modal = document.getElementById('modal');
+    document.querySelectorAll('[data-modal]').forEach(card=>{
+      card.addEventListener('click',()=>{
+        document.getElementById('modalKicker').textContent = card.dataset.subtitle;
+        document.getElementById('modalTitle').textContent = card.dataset.title;
+        document.getElementById('modalDesc').textContent = card.dataset.desc;
+        document.getElementById('modalTags').innerHTML = card.dataset.tags.split(',').map(t=>`<span class="modal-tag">${t.trim()}</span>`).join('');
+        const acts = document.getElementById('modalActions'); acts.innerHTML='';
+        if(card.dataset.github){ const a=document.createElement('a'); a.href=card.dataset.github; a.target='_blank'; a.className='btn btn-fill'; a.textContent='GitHub ↗'; acts.appendChild(a); }
+        if(card.dataset.demo){ const a=document.createElement('a'); a.href=card.dataset.demo; a.target='_blank'; a.className='btn btn-outline'; a.textContent='Live Demo ↗'; acts.appendChild(a); }
+        modal.classList.add('open'); document.body.style.overflow='hidden';
+      });
+    });
+    const closeModal=()=>{modal.classList.remove('open');document.body.style.overflow='';};
+    document.getElementById('modalClose').addEventListener('click',closeModal);
+    modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+    const tog=document.getElementById('mobileToggle'), mob=document.getElementById('mobileMenu');
+    tog.addEventListener('click',()=>{ mob.classList.toggle('open'); tog.textContent=mob.classList.contains('open')?'✕':'☰'; });
+    mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ mob.classList.remove('open'); tog.textContent='☰'; }));
+  </script>
 </body>
 </html>

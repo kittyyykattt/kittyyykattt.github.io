@@ -1,9 +1,5 @@
 // =========================================================
 // Katya Serechenko — portfolio interactions
-// - progres bar
-// - mobile nav drawer
-// - active section highlight
-// - particle canvas background
 // =========================================================
 
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -13,16 +9,11 @@ const progressBar = document.getElementById("scroll-progress-bar");
 
 function updateProgress() {
   const scrollTop = window.scrollY;
-  const docHeight =
-    document.documentElement.scrollHeight - window.innerHeight;
-
-  const progress = (scrollTop / docHeight) * 100;
-  progressBar.style.width = `${progress}%`;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = `${(scrollTop / docHeight) * 100}%`;
 }
-
 window.addEventListener("scroll", updateProgress);
 window.addEventListener("load", updateProgress);
-
 
 // ----- Mobile nav drawer -----
 const navToggle = document.getElementById("navToggle");
@@ -35,11 +26,8 @@ function setDrawer(open) {
 
 if (navToggle && navDrawer) {
   navToggle.addEventListener("click", () => {
-    const open = navToggle.getAttribute("aria-expanded") === "true";
-    setDrawer(!open);
+    setDrawer(navToggle.getAttribute("aria-expanded") !== "true");
   });
-
-  // Close drawer when clicking a link
   navDrawer.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", () => setDrawer(false));
   });
@@ -54,25 +42,19 @@ const sections = ["home", "experience", "projects", "skills", "contact"]
 function setActiveNav() {
   const y = window.scrollY + 120;
   let activeId = "home";
-
   for (const sec of sections) {
     if (sec.offsetTop <= y) activeId = sec.id;
   }
-
   navLinks.forEach((a) => {
-    const href = a.getAttribute("href");
-    const isActive = href === `#${activeId}`;
-    a.classList.toggle("active", isActive);
+    a.classList.toggle("active", a.getAttribute("href") === `#${activeId}`);
   });
 }
-
 window.addEventListener("scroll", setActiveNav);
 window.addEventListener("load", setActiveNav);
 
 // ===== Particles background =====
 const canvas = document.getElementById("particles");
 const ctx = canvas ? canvas.getContext("2d") : null;
-
 let particles = [];
 
 function resize() {
@@ -84,59 +66,40 @@ function resize() {
   canvas.style.height = `${window.innerHeight}px`;
   if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
-
 window.addEventListener("resize", resize);
 
-function rand(min, max) {
-  return Math.random() * (max - min) + min;
-}
+function rand(min, max) { return Math.random() * (max - min) + min; }
 
 function seedParticles() {
   if (!canvas) return;
   const count = Math.round(Math.min(90, Math.max(45, window.innerWidth / 18)));
   particles = Array.from({ length: count }, () => ({
-    x: rand(0, window.innerWidth),
-    y: rand(0, window.innerHeight),
-    r: rand(1.2, 3.2),
-    vx: rand(-0.35, 0.35),
-    vy: rand(-0.25, 0.25),
+    x: rand(0, window.innerWidth), y: rand(0, window.innerHeight),
+    r: rand(1.2, 3.2), vx: rand(-0.35, 0.35), vy: rand(-0.25, 0.25),
   }));
 }
 
 function step() {
   if (!canvas || !ctx) return;
-
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-  // dots
   for (const p of particles) {
-    p.x += p.vx;
-    p.y += p.vy;
-
+    p.x += p.vx; p.y += p.vy;
     if (p.x < -20) p.x = window.innerWidth + 20;
     if (p.x > window.innerWidth + 20) p.x = -20;
     if (p.y < -20) p.y = window.innerHeight + 20;
     if (p.y > window.innerHeight + 20) p.y = -20;
-
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fillStyle = "rgba(255,255,255,0.40)";
     ctx.fill();
   }
-
-  // lines
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
-      const a = particles[i];
-      const b = particles[j];
-      const dx = a.x - b.x;
-      const dy = a.y - b.y;
-      const d2 = dx * dx + dy * dy;
-      const max = 140;
-
+      const a = particles[i], b = particles[j];
+      const dx = a.x - b.x, dy = a.y - b.y;
+      const d2 = dx * dx + dy * dy, max = 140;
       if (d2 < max * max) {
-        const d = Math.sqrt(d2);
-        const t = 1 - d / max;
+        const t = 1 - Math.sqrt(d2) / max;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
@@ -146,94 +109,137 @@ function step() {
       }
     }
   }
-
   requestAnimationFrame(step);
 }
 
-if (canvas && ctx) {
-  resize();
-  seedParticles();
-  step();
-}
+if (canvas && ctx) { resize(); seedParticles(); step(); }
 
-// re-seed on orientation changes / large resizes
-let lastW = window.innerWidth;
-let lastH = window.innerHeight;
+let lastW = window.innerWidth, lastH = window.innerHeight;
 setInterval(() => {
   const w = window.innerWidth, h = window.innerHeight;
   if (Math.abs(w - lastW) > 180 || Math.abs(h - lastH) > 180) {
-    lastW = w; lastH = h;
-    seedParticles();
+    lastW = w; lastH = h; seedParticles();
   }
 }, 800);
 
-const cards = document.querySelectorAll(".project-card");
-const overlay = document.getElementById("projectOverlay");
-const modalHostRoot = document.getElementById("projectModalHost");
 
-let activeHost = null;
+// =========================================================
+// ===== Projects Grid =====
+// =========================================================
+(function () {
+  const grid   = document.getElementById("projectsGrid");
+  const btn    = document.getElementById("btnSeeAll");
+  if (!grid || !btn) return;
 
-function closeModal() {
-  if (!activeHost) return;
+  const cards = Array.from(grid.querySelectorAll(".pc"));
 
-  modalHostRoot.innerHTML = "";
-  overlay.classList.remove("active");
-  document.body.classList.remove("modal-open");
+  // Inject image preview into each card
+  cards.forEach((card, i) => {
+    if (i >= 4) card.classList.add("pc-hidden");
 
-  activeHost = null;
+    // Wrap existing text children in .pc-body
+    const body = document.createElement("div");
+    body.className = "pc-body";
+    while (card.firstChild) body.appendChild(card.firstChild);
+    card.appendChild(body);
+
+    // Prepend image preview if available
+    const image = card.dataset.image;
+    if (image) {
+      const preview = document.createElement("div");
+      preview.className = "pc-preview";
+      const img = document.createElement("img");
+      img.src = image;
+      img.alt = card.dataset.title + " preview";
+      img.loading = "lazy";
+      preview.appendChild(img);
+      card.insertBefore(preview, card.firstChild);
+    }
+
+    card.addEventListener("click", () => openModal(card));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card); }
+    });
+  });
+
+  let expanded = false;
+
+  btn.addEventListener("click", () => {
+    expanded = !expanded;
+    grid.classList.toggle("expanded", expanded);
+    btn.textContent = expanded ? "Show Less" : "See All Projects";
+    btn.setAttribute("aria-expanded", String(expanded));
+  });
+})();
+
+
+// =========================================================
+// ===== Project Modal =====
+// =========================================================
+const overlay   = document.getElementById("projectOverlay");
+const modalHost = document.getElementById("projectModalHost");
+
+function getCardGradient(card) {
+  const gradients = {
+    "pc-nolepath":   "linear-gradient(145deg, #6a2433, #8C3A4A, #7a3055)",
+    "pc-thera":      "linear-gradient(145deg, #168a66, #1FA67A, #15907a)",
+    "pc-mood":       "linear-gradient(145deg, #1a1040, #2d1b69, #3d2280)",
+    "pc-insta":      "linear-gradient(145deg, #833ab4, #c13584, #e1306c)",
+    "pc-network":    "linear-gradient(145deg, #0f3460, #16213e, #1a4a8a)",
+    "pc-hash":       "linear-gradient(145deg, #1a3a2a, #2d6644, #1e5038)",
+    "pc-bst":        "linear-gradient(145deg, #3b2a1a, #7a4a20, #5a3a10)",
+    "pc-flight":     "linear-gradient(145deg, #1c2e60, #2a4494, #1e3a7a)",
+    "pc-matrix":     "linear-gradient(145deg, #1a1a3e, #2d2d6a, #3a2a80)",
+    "pc-calc":       "linear-gradient(145deg, #1c3a1c, #2d6b2d, #1e541e)",
+    "pc-battleship": "linear-gradient(145deg, #1a2a3e, #2c4464, #243a5a)",
+  };
+  const variant = Array.from(card.classList).find(c => c.startsWith("pc-") && c !== "pc" && c !== "pc-hidden");
+  return gradients[variant] || "linear-gradient(145deg, #1a1a2e, #2d2d4a)";
 }
 
-cards.forEach((card) => {
-  const openModal = () => {
-    if (activeHost) return;
+function openModal(card) {
+  const title    = card.dataset.title || "";
+  const subtitle = card.dataset.subtitle || "";
+  const desc     = card.dataset.desc || "";
+  const tags     = (card.dataset.tags || "").split(",").filter(Boolean);
+  const github   = card.dataset.github || "";
+  const demo     = card.dataset.demo || "";
+  const image    = card.dataset.image || "";
+  const gradient = getCardGradient(card);
 
-    // clone the card
-    const clone = card.cloneNode(true);
-    clone.classList.add("project-modal-card");
-    clone.classList.remove("project-card");
+  const tagsHTML  = tags.map(t => `<span class="pm-tag">${t.trim()}</span>`).join("");
+  const imageHTML = image ? `<div class="pm-image"><img src="${image}" alt="${title} screenshot" loading="lazy"></div>` : "";
+  const demoBtn   = demo   ? `<a class="pm-btn pm-btn-primary"   href="${demo}"   target="_blank" rel="noopener noreferrer">🔗 Live Demo</a>` : "";
+  const githubBtn = github ? `<a class="pm-btn pm-btn-secondary" href="${github}" target="_blank" rel="noopener noreferrer">📦 View Code</a>` : "";
 
-    // add a close button to the clone
-    const closeBtn = document.createElement("button");
-    closeBtn.type = "button";
-    closeBtn.className = "project-close";
-    closeBtn.setAttribute("aria-label", "Close project details");
-    closeBtn.innerHTML = "✕";
-    closeBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      closeModal();
-    });
+  modalHost.innerHTML = `
+    <div class="project-modal-host" id="pmHost">
+      <div class="pm" style="background: ${gradient};" role="dialog" aria-modal="true" aria-label="${title}">
+        <button class="pm-close" id="pmClose" aria-label="Close modal">✕</button>
+        ${imageHTML}
+        <p class="pm-subtitle">${subtitle}</p>
+        <h2 class="pm-title">${title}</h2>
+        <p class="pm-desc">${desc}</p>
+        <div class="pm-tags">${tagsHTML}</div>
+        <div class="pm-actions">${demoBtn}${githubBtn}</div>
+      </div>
+    </div>
+  `;
 
-    clone.prepend(closeBtn);
-
-    // host (full screen)
-    const host = document.createElement("div");
-    host.className = "project-modal-host";
-    host.appendChild(clone);
-    modalHostRoot.appendChild(host);
-
-    // show overlay + lock scroll
-    overlay.classList.add("active");
-    document.body.classList.add("modal-open");
-
-    // click outside the card closes (host covers whole screen)
-    host.addEventListener("click", (e) => {
-      if (e.target === host) closeModal();
-    });
-
-    activeHost = host;
-  };
-
-  card.addEventListener("click", (e) => {
-    // if user clicked a link inside the card, don't open modal
-    if (e.target.closest("a")) return;
-    openModal();
+  overlay.classList.add("active");
+  document.body.classList.add("modal-open");
+  document.getElementById("pmClose").addEventListener("click", closeModal);
+  document.getElementById("pmHost").addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeModal();
   });
+  setTimeout(() => document.getElementById("pmClose")?.focus(), 50);
+}
 
-  card.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") openModal();
-  });
-});
+function closeModal() {
+  overlay.classList.remove("active");
+  document.body.classList.remove("modal-open");
+  modalHost.innerHTML = "";
+}
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeModal();
-});
+overlay.addEventListener("click", closeModal);
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
