@@ -16,6 +16,8 @@
 | Project | Description | Stack |
 |---|---|---|
 | [**Portfolio**](https://katyaserechenko.com) | Personal portfolio website | JS/HTML/CSS |
+| [**Cafe Landing Template**](https://www.katyaserechenko.com/cafe/) | Editorial landing page for cafes & small businesses | HTML/CSS |
+| [**The Big Event 2026**](https://thebigevent.github.io/TBE2026/index.html) | Big Event day service site assignment lookup for volunteers | HTML/CSS/JS |
 | [**Nole Path**](https://github.com/kittyyykattt/Nole-Path) · [demo ↗](https://kittyyykattt.github.io/Nole-Path/) | Campus navigation & course planning tool for FSU students | TypeScript/React |
 | [**TheraOffice**](https://github.com/kittyyykattt/TheraOffice) | Therapy office management system remake | C#/.NET |
 | [**Mood Camera**](https://github.com/kittyyykattt/mood-camera) | Emotion-detecting camera application | Python |
